@@ -1,4 +1,5 @@
 body{
+	padding-top: 80px;
 	font-family: helvetica;
 	background: #dddddc url("../images/pattern-bg.png") repeat scroll 50% 50%;
 }
