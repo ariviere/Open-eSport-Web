@@ -1,0 +1,46 @@
+[
+    {
+        "name": "O Gaming",
+        "enabled": true 
+    }, 
+    {
+        "name": "Team aAa",
+        "enabled": true 
+    }, 
+    {
+        "name": "Millenium",
+        "enabled": true 
+    }, 
+    {
+        "name": "Thunderbot",
+        "enabled": true 
+    }, 
+    {
+        "name": "IEWT",
+        "enabled": true 
+    }, 
+    {
+        "name": "VaKarM",
+        "enabled": true 
+    }, 
+    {
+        "name": "Reddit",
+        "enabled": true 
+    }, 
+    {
+        "name": "onGamers",
+        "enabled": true 
+    }, 
+    {
+        "name": "SK Gaming",
+        "enabled": true 
+    }, 
+    {
+        "name": "HLTV",
+        "enabled": true 
+    }, 
+    {
+        "name": "TeamLiquid",
+        "enabled": true 
+    }
+]

@@ -1,0 +1,124 @@
+<div class="container">
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="game-column column-left">
+            <div class="game-title-container">
+              <a href="#/lol">
+                <img src="images/lol.png" class="imgh2" />
+                <span class="game-title">{{gameTitles['lol']}}</span>
+              </a>
+            </div>
+            <ul class="articles-list">
+              <li ng-repeat="article in lol | orderBy:orderProp | startFrom:current_page['lol']*page_size | limitTo:page_size">
+                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_small.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
+              </li>
+            </ul>
+            <div class="pagination-container">
+              <button ng-disabled="current_page['lol'] == 0" ng-click="current_page['lol']=current_page['lol']-1">&laquo;</button>
+              <button ng-disabled="current_page['lol'] >= lol.length/page_size - 1" ng-click="current_page['lol']=current_page['lol']+1">&raquo;</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="game-column column-right">
+            <div class="game-title-container">
+              <a href="#/sc2">
+                <img src="images/sc2.png" class="imgh2" />
+                <span class="game-title">{{gameTitles['sc2']}}</span>
+              </a>
+            </div>
+            <ul class="articles-list">
+              <li ng-repeat="article in sc2 | orderBy:orderProp | startFrom:current_page['sc2']*page_size | limitTo:page_size">
+                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_small.png" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
+              </li>
+            </ul>
+            <div class="pagination-container">
+              <button ng-disabled="current_page['sc2'] == 0" ng-click="current_page['sc2']=current_page['sc2']-1">&laquo;</button>
+              <button ng-disabled="current_page['sc2'] >= sc2.length/page_size - 1" ng-click="current_page['sc2']=current_page['sc2']+1">&raquo;</button>
+            </div>
+          </div>
+       </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="game-column column-left">
+            <div class="game-title-container">
+              <a href="#/dota2">
+                <img src="images/dota2.png" class="imgh2" />
+                <span class="game-title">{{gameTitles['dota2']}}</span>
+              </a>
+            </div>
+            <ul class="articles-list">
+              <li ng-repeat="article in dota2 | orderBy:orderProp | startFrom:current_page['dota2']*page_size | limitTo:page_size">
+                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_small.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
+              </li>
+            </ul>
+            <div class="pagination-container">
+              <button ng-disabled="current_page['dota2'] == 0" ng-click="current_page['dota2']=current_page['dota2']-1">&laquo;</button>
+              <button ng-disabled="current_page['dota2'] >= dota2.length/page_size - 1" ng-click="current_page['dota2']=current_page['dota2']+1">&raquo;</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="game-column column-right">
+            <div class="game-title-container">
+              <a href="#/csgo">
+                <img src="images/csgo.png" class="imgh2" />
+                <span class="game-title">{{gameTitles['csgo']}}</span>
+              </a>
+            </div>
+            <ul class="articles-list">
+              <li ng-repeat="article in csgo | orderBy:orderProp | startFrom:current_page['csgo']*page_size | limitTo:page_size">
+                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_small.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
+              </li>
+            </ul>
+            <div class="pagination-container">
+              <button ng-disabled="current_page['csgo'] == 0" ng-click="current_page['csgo']=current_page['csgo']-1">&laquo;</button>
+              <button ng-disabled="current_page['csgo'] >= csgo.length/page_size - 1" ng-click="current_page['csgo']=current_page['csgo']+1">&raquo;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="game-column column-left">
+            <div class="game-title-container">
+              <a href="#/others">
+                <img src="images/others.png" class="imgh2" />
+                <span class="game-title">{{gameTitles['others']}}</span>
+              </a>
+            </div>
+            <ul class="articles-list">
+              <li ng-repeat="article in others | orderBy:orderProp | startFrom:current_page['others']*page_size | limitTo:page_size">
+                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_small.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
+              </li>
+            </ul>
+            <div class="pagination-container">
+              <button ng-disabled="current_page['others'] == 0" ng-click="current_page['others']=current_page['others']-1">&laquo;</button>
+              <button ng-disabled="current_page['others'] >= others.length/page_size - 1" ng-click="current_page['others']=current_page['others']+1">&raquo;</button>
+            </div>
+          </div>
+       </div>
+        <div class="col-md-6">
+          <div class="about-column column-right">
+            <div class="game-title-container">
+                <img src="images/oe_logo_30.png" class="imgh2" />
+                <span class="game-title">À PROPOS</span>
+            </div>
+            <div class="about_text">
+              <p>Les sites disponibles sont dans l'ordre des filtres : O'Gaming, Team aAa, Millenium, Thunderbot, In Esport We Trust, VaKarM, Reddit, onGamers, SK Gaming, HLTV et TeamLiquid. Merci à Stephane 'deKey' Sanchez pour le logo.</p><br />
+
+              <p>Open eSport est également disponible sur smartphones et tablettes Android. Rendez-vous sur le Play Store.</p><br />
+
+              <div style="text-align:center; margin: 10px 0;"><a href="https://play.google.com/store/apps/details?id=com.ar.oe" target="_blank"><img src="images/android_logo.png" /><a/></div><br />
+              
+              <p>Retrouvez moi sur Twitter <a href="http://www.twitter.com/AntoineRvr" target="_blank">@AntoineRvr</a> et/ou contactez moi par mail à antoine[arobase]riviere[point]tf</p>
+            </div>
+          </div>
+        </div>
+      </div>

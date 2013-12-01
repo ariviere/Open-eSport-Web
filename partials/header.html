@@ -1,0 +1,12 @@
+<div class="navbar navbar-inverse" role="navigation">
+  <div class="container" >
+    <a style="display:inline" class="navbar-brand" href="#"><img src="images/logo.png" alt="Open eSport"></a>
+    <div class="game-icon pull-right" style="display:inline" >
+      <div ng-repeat="website in websites" style="display:inline">
+        <img class="inner" ng-class="{active:website.enabled}" ng-src="images/{{websiteIds[website.name]}}_28.png" alt="{{website.name}}" title="{{website.name}}" ng-click="showWebsite(website.name)"></a>
+      </div>
+    </div>
+  </div>
+    
+  </div>
+</div>
