@@ -1,0 +1,22 @@
+[
+    {
+        "name": "League of Legends",
+        "id": "lol"
+    }, 
+    {
+        "name": "Starcraft 2",
+        "id": "sc2"
+    }, 
+    {
+        "name": "DotA 2",
+        "id": "dota2"
+    }, 
+    {
+        "name": "Countrer Strike: GO",
+        "id": "csgo"
+    }, 
+    {
+        "name": "Autres",
+        "id": "others"
+    }
+]
