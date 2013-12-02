@@ -10,7 +10,7 @@
             <ul class="articles-list">
               <li ng-repeat="article in gameArticles | filter:query | orderBy:orderProp">
                 <a target="_blank" href="{{article.link}}">
-                  <div class="pull-left" style="position:absolute; padding-top:8px"><img ng-src="images/{{websiteIds[article.website]}}.png" height="24" width="24" /></div> 
+                  <div class="pull-left" style="position:absolute; padding-top:8px"><img ng-src="images/{{websiteIds[article.website]}}_24.png" /></div> 
                   <div style="position:relative; padding-left:33px">{{article.title}} <br />
                   <span class="article-date">{{article.date}}</span> par <span class="article-date">{{article.author}}</span></div>
                 </a>

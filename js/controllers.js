@@ -4,10 +4,9 @@
 
 var articleControllers = angular.module('articleControllers', []);
 
-articleControllers.controller('ArticleListCtrl', ['$scope', '$rootScope', '$resource', '$cookies', '$filter', 'Article', 'Game', 
-function($scope, $rootScope, $resource, $cookies, $filter, Article, Game) {
+articleControllers.controller('ArticleListCtrl', ['$scope', '$rootScope', '$resource', '$cookies', '$filter', 
+function($scope, $rootScope, $resource, $cookies, $filter) {
   
-    console.log($rootScope.websites[0]);
     
     $scope.gameTitles = { 'lol': 'LEAGUE OF LEGENDS', 'sc2': 'STARCRAFT II', 'dota2': 'DOTA 2', 'csgo': 'COUNTER STRIKE : GO', 'others': 'AUTRES'};
 
@@ -91,14 +90,13 @@ articleControllers.filter('startFrom', function() {
         if(typeof input === 'undefined')
             return input;
 
-        console.log("FILTERING input: " + input + ", start: " + start);
         start = +start; //parse to int
         return input.slice(start);
     }
 });
 
-articleControllers.controller('ArticleGameCtrl', ['$scope', '$rootScope', '$resource', '$cookies', '$routeParams', '$filter', 'Article', 
-function($scope, $rootScope, $resource, $cookies, $routeParams, $filter, Article) {
+articleControllers.controller('ArticleGameCtrl', ['$scope', '$rootScope', '$resource', '$cookies', '$routeParams', '$filter',
+function($scope, $rootScope, $resource, $cookies, $routeParams, $filter) {
 
     $scope.game = $routeParams.game; 
 

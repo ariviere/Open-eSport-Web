@@ -4,7 +4,6 @@ var articleApp = angular.module('articleApp', [
 	'ngRoute',
 	'ngCookies',
 	'ngResource',
-	'articleFilters',
 	'articleControllers',
 	'headerControllers',
 	'articleServices'

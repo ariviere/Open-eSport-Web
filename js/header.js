@@ -1,7 +1,8 @@
-var headerControllers = angular.module('headerControllers', ['headerServices', 'ngCookies']);
+var headerControllers = angular.module('headerControllers', ['ngCookies']);
 
-headerControllers.controller('navCtrl', ['$scope', '$rootScope', '$cookies', '$resource', 'HeaderWebsiteService', function($scope, $rootScope, $cookies, $resource, HeaderWebsiteService) {
+headerControllers.controller('navCtrl', ['$scope', '$rootScope', '$cookies', '$resource', function($scope, $rootScope, $cookies, $resource) {
 	var request = $resource('resources/websites.json');
+	
 	$scope.websiteIds = { 'Team aAa': 'teamaaa', 'O Gaming': 'ogaming', 'Millenium': 'millenium', 'Thunderbot': 'thunderbot', 'IEWT': 'iewt'
                         , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'};
 
@@ -27,7 +28,6 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', '$cookies', '$r
 			// if($cookie[website.name] === 'undefined' || $cookie[website.name]){
 				website.enabled = !website.enabled;
 				$cookies[website.name] = website.enabled.toString();
-				console.log("website IF: " + website_selected + ", enabled: " + website.enabled + ", cookie " + website.name + " :" + $cookies[website.name]);
 			}
 		});
 
