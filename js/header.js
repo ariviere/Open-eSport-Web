@@ -4,7 +4,8 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', '$cookies', '$r
 	var request = $resource('resources/websites.json');
 	
 	$scope.websiteIds = { 'Team aAa': 'teamaaa', 'O Gaming': 'ogaming', 'Millenium': 'millenium', 'Thunderbot': 'thunderbot', 'IEWT': 'iewt'
-                        , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'};
+                        , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'
+                        , 'joinDOTA': 'joindota'};
 
 	request.query(function(data){
 		$rootScope.websites = data;

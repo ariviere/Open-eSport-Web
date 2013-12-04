@@ -36,7 +36,8 @@ function($scope, $rootScope, $resource, $cookies, $filter) {
         $scope.games[4] = {'short': 'others', 'long': 'AUTRES'};
     
     $scope.websiteIds = { 'Team aAa': 'teamaaa', 'O Gaming': 'ogaming', 'Millenium': 'millenium', 'Thunderbot': 'thunderbot', 'IEWT': 'iewt'
-                        , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'};
+                        , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'
+                        , 'joinDOTA': 'joindota'};
 
     var request = $resource('http://openesport.herokuapp.com/posts/all');
 
@@ -144,7 +145,8 @@ function($scope, $rootScope, $resource, $cookies, $routeParams, $filter) {
 
     var gameTitles = { 'lol': 'LEAGUE OF LEGENDS', 'sc2': 'STARCRAFT II', 'dota2': 'DOTA 2', 'csgo': 'COUNTER STRIKE : GO', 'others': 'AUTRES'};
     $scope.websiteIds = { 'Team aAa': 'teamaaa', 'O Gaming': 'ogaming', 'Millenium': 'millenium', 'Thunderbot': 'thunderbot', 'IEWT': 'iewt'
-                        , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'};
+                        , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'
+                        , 'joinDOTA': 'joindota'};
 
     $scope.game_title = gameTitles[$scope.game];
 

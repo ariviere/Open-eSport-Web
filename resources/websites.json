@@ -42,5 +42,9 @@
     {
         "name": "TeamLiquid",
         "enabled": true 
+    },
+    {
+        "name": "joinDOTA",
+        "enabled": true 
     }
 ]
