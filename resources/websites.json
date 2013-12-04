@@ -24,6 +24,10 @@
         "enabled": true 
     }, 
     {
+        "name": "dota2fr",
+        "enabled": true 
+    }, 
+    {
         "name": "Reddit",
         "enabled": true 
     }, 
