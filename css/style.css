@@ -117,7 +117,7 @@ body{
 }
 
 .navbar-brand {
-	padding: 5px 25px;
+	padding: 5px 0 5px 25px;
 	margin: 5px 0;
 }
 
@@ -168,4 +168,15 @@ button:hover{
     .navbar-high{
     	display:none;
     }
+}
+
+.filter_title{
+	cursor:default;
+	color:#cdcdcd;
+	font-size: 14px;
+	font-family: 'Oxygen', sans-serif;
+}
+
+.arrow{
+	cursor:pointer;
 }

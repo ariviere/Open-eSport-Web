@@ -4,19 +4,20 @@
         <div class="col-md-6">
           <div class="game-column column-left">
             <div class="game-title-container">
-              <a href="#/lol">
-                <img src="images/lol.png" class="imgh2" />
-                <span class="game-title">{{gameTitles['lol']}}</span>
+              <a href="#/{{games[0]['short']}}">
+                <img src="images/{{games[0]['short']}}.png" class="imgh2" />
+                <span class="game-title">{{games[0]['long']}}</span>
               </a>
+            <span class="pull-right arrow"><img ng-click="move_bloc(0, 1)" src="images/arrow-right" /></span>
             </div>
             <ul class="articles-list">
-              <li ng-repeat="article in lol | orderBy:orderProp | startFrom:current_page['lol']*page_size | limitTo:page_size">
+              <li ng-repeat="article in posts[games[0]['short']] | orderBy:orderProp | startFrom:current_page[games[0]['short']]*page_size | limitTo:page_size">
                 <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_16.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
               </li>
             </ul>
             <div class="pagination-container">
-              <button ng-disabled="current_page['lol'] == 0" ng-click="current_page['lol']=current_page['lol']-1">&laquo;</button>
-              <button ng-disabled="current_page['lol'] >= lol.length/page_size - 1" ng-click="current_page['lol']=current_page['lol']+1">&raquo;</button>
+              <button ng-disabled="current_page[games[0]['short']] == 0" ng-click="previousPage(0)">&laquo;</button>
+              <button ng-disabled="current_page[games[0]['short']] >= posts[games[0]['short']].length/page_size - 1" ng-click="nextPage(0)">&raquo;</button>
             </div>
           </div>
         </div>
@@ -24,19 +25,23 @@
         <div class="col-md-6">
           <div class="game-column column-right">
             <div class="game-title-container">
-              <a href="#/sc2">
-                <img src="images/sc2.png" class="imgh2" />
-                <span class="game-title">{{gameTitles['sc2']}}</span>
+              <a href="#/{{games[1]['short']}}">
+                <img src="images/{{games[1]['short']}}.png" class="imgh2" />
+                <span class="game-title">{{games[1]['long']}}</span>
               </a>
+            <span class="pull-right arrow">
+              <img ng-click="move_bloc(1, 0)" src="images/arrow-left" />
+              <img ng-click="move_bloc(1, 2)" src="images/arrow-right" />
+            </span>
             </div>
             <ul class="articles-list">
-              <li ng-repeat="article in sc2 | orderBy:orderProp | startFrom:current_page['sc2']*page_size | limitTo:page_size">
+              <li ng-repeat="article in posts[games[1]['short']] | orderBy:orderProp | startFrom:current_page[games[1]['short']]*page_size | limitTo:page_size">
                 <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_16.png" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
               </li>
             </ul>
             <div class="pagination-container">
-              <button ng-disabled="current_page['sc2'] == 0" ng-click="current_page['sc2']=current_page['sc2']-1">&laquo;</button>
-              <button ng-disabled="current_page['sc2'] >= sc2.length/page_size - 1" ng-click="current_page['sc2']=current_page['sc2']+1">&raquo;</button>
+              <button ng-disabled="current_page[games[1]['short']] == 0" ng-click="current_page[games[1]['short']]=current_page[games[1]['short']]-1">&laquo;</button>
+              <button ng-disabled="current_page[games[1]['short']] >= posts[games[1]['short']].length/page_size - 1" ng-click="current_page[games[1]['short']]=current_page[games[1]['short']]+1">&raquo;</button>
             </div>
           </div>
        </div>
@@ -46,19 +51,23 @@
         <div class="col-md-6">
           <div class="game-column column-left">
             <div class="game-title-container">
-              <a href="#/dota2">
-                <img src="images/dota2.png" class="imgh2" />
-                <span class="game-title">{{gameTitles['dota2']}}</span>
+              <a href="#/{{games[2]['short']}}">
+                <img src="images/{{games[2]['short']}}.png" class="imgh2" />
+                <span class="game-title">{{games[2]['long']}}</span>
               </a>
+              <span class="pull-right arrow">
+                <img ng-click="move_bloc(2, 1)" src="images/arrow-left" />
+                <img ng-click="move_bloc(2, 3)" src="images/arrow-right" />
+              </span>
             </div>
             <ul class="articles-list">
-              <li ng-repeat="article in dota2 | orderBy:orderProp | startFrom:current_page['dota2']*page_size | limitTo:page_size">
+              <li ng-repeat="article in posts[games[2]['short']] | orderBy:orderProp | startFrom:current_page[games[2]['short']]*page_size | limitTo:page_size">
                 <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_16.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
               </li>
             </ul>
             <div class="pagination-container">
-              <button ng-disabled="current_page['dota2'] == 0" ng-click="current_page['dota2']=current_page['dota2']-1">&laquo;</button>
-              <button ng-disabled="current_page['dota2'] >= dota2.length/page_size - 1" ng-click="current_page['dota2']=current_page['dota2']+1">&raquo;</button>
+              <button ng-disabled="current_page[games[2]['short']] == 0" ng-click="current_page[games[2]['short']]=current_page[games[2]['short']]-1">&laquo;</button>
+              <button ng-disabled="current_page[games[2]['short']] >= posts[games[2]['short']].length/page_size - 1" ng-click="current_page[games[2]['short']]=current_page[games[2]['short']]+1">&raquo;</button>
             </div>
           </div>
         </div>
@@ -66,19 +75,23 @@
         <div class="col-md-6">
           <div class="game-column column-right">
             <div class="game-title-container">
-              <a href="#/csgo">
-                <img src="images/csgo.png" class="imgh2" />
-                <span class="game-title">{{gameTitles['csgo']}}</span>
+              <a href="#/{{games[3]['short']}}">
+                <img src="images/{{games[3]['short']}}.png" class="imgh2" />
+                <span class="game-title">{{games[3]['long']}}</span>
               </a>
+              <span class="pull-right arrow">
+                <img ng-click="move_bloc(3, 2)" src="images/arrow-left" />
+                <img ng-click="move_bloc(3, 4)" src="images/arrow-right" />
+              </span>
             </div>
             <ul class="articles-list">
-              <li ng-repeat="article in csgo | orderBy:orderProp | startFrom:current_page['csgo']*page_size | limitTo:page_size">
+              <li ng-repeat="article in posts[games[3]['short']] | orderBy:orderProp | startFrom:current_page[games[3]['short']]*page_size | limitTo:page_size">
                 <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_16.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
               </li>
             </ul>
             <div class="pagination-container">
-              <button ng-disabled="current_page['csgo'] == 0" ng-click="current_page['csgo']=current_page['csgo']-1">&laquo;</button>
-              <button ng-disabled="current_page['csgo'] >= csgo.length/page_size - 1" ng-click="current_page['csgo']=current_page['csgo']+1">&raquo;</button>
+              <button ng-disabled="current_page[games[3]['short']] == 0" ng-click="current_page[games[3]['short']]=current_page[games[3]['short']]-1">&laquo;</button>
+              <button ng-disabled="current_page[games[3]['short']] >= posts[games[3]['short']].length/page_size - 1" ng-click="current_page[games[3]['short']]=current_page[games[3]['short']]+1">&raquo;</button>
             </div>
           </div>
         </div>
@@ -88,19 +101,22 @@
         <div class="col-md-6">
           <div class="game-column column-left">
             <div class="game-title-container">
-              <a href="#/others">
-                <img src="images/others.png" class="imgh2" />
-                <span class="game-title">{{gameTitles['others']}}</span>
+              <a href="#/{{games[4]['short']}}">
+                <img ng-src="images/{{games[4]['short']}}.png" class="imgh2" />
+                <span class="game-title">{{games[4]['long']}}</span>
               </a>
+              <span class="pull-right arrow">
+                <img ng-click="move_bloc(4, 3)" src="images/arrow-left" />
+              </span>
             </div>
             <ul class="articles-list">
-              <li ng-repeat="article in others | orderBy:orderProp | startFrom:current_page['others']*page_size | limitTo:page_size">
+              <li ng-repeat="article in posts[games[4]['short']] | orderBy:orderProp | startFrom:current_page[games[4]['short']]*page_size | limitTo:page_size">
                 <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_16.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
               </li>
             </ul>
             <div class="pagination-container">
-              <button ng-disabled="current_page['others'] == 0" ng-click="current_page['others']=current_page['others']-1">&laquo;</button>
-              <button ng-disabled="current_page['others'] >= others.length/page_size - 1" ng-click="current_page['others']=current_page['others']+1">&raquo;</button>
+              <button ng-disabled="current_page[games[4]['short']] == 0" ng-click="current_page[games[4]['short']]=current_page[games[4]['short']]-1">&laquo;</button>
+              <button ng-disabled="current_page[games[4]['short']] >= posts[games[4]['short']].length/page_size - 1" ng-click="current_page[games[4]['short']]=current_page[games[4]['short']]+1">&raquo;</button>
             </div>
           </div>
        </div>
