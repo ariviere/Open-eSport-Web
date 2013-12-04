@@ -8,7 +8,7 @@
                 <img src="images/{{games[0]['short']}}.png" class="imgh2" />
                 <span class="game-title">{{games[0]['long']}}</span>
               </a>
-            <span class="pull-right arrow"><img ng-click="move_bloc(0, 1)" src="images/arrow-right" /></span>
+            <span class="pull-right arrow"><img ng-click="move_bloc(0, 1)" src="images/arrow-right.png" /></span>
             </div>
             <ul class="articles-list">
               <li ng-repeat="article in posts[games[0]['short']] | orderBy:orderProp | startFrom:current_page[games[0]['short']]*page_size | limitTo:page_size">
@@ -30,8 +30,8 @@
                 <span class="game-title">{{games[1]['long']}}</span>
               </a>
             <span class="pull-right arrow">
-              <img ng-click="move_bloc(1, 0)" src="images/arrow-left" />
-              <img ng-click="move_bloc(1, 2)" src="images/arrow-right" />
+              <img ng-click="move_bloc(1, 0)" src="images/arrow-left.png" />
+              <img ng-click="move_bloc(1, 2)" src="images/arrow-right.png" />
             </span>
             </div>
             <ul class="articles-list">
@@ -56,8 +56,8 @@
                 <span class="game-title">{{games[2]['long']}}</span>
               </a>
               <span class="pull-right arrow">
-                <img ng-click="move_bloc(2, 1)" src="images/arrow-left" />
-                <img ng-click="move_bloc(2, 3)" src="images/arrow-right" />
+                <img ng-click="move_bloc(2, 1)" src="images/arrow-left.png" />
+                <img ng-click="move_bloc(2, 3)" src="images/arrow-right.png" />
               </span>
             </div>
             <ul class="articles-list">
@@ -80,8 +80,8 @@
                 <span class="game-title">{{games[3]['long']}}</span>
               </a>
               <span class="pull-right arrow">
-                <img ng-click="move_bloc(3, 2)" src="images/arrow-left" />
-                <img ng-click="move_bloc(3, 4)" src="images/arrow-right" />
+                <img ng-click="move_bloc(3, 2)" src="images/arrow-left.png" />
+                <img ng-click="move_bloc(3, 4)" src="images/arrow-right.png" />
               </span>
             </div>
             <ul class="articles-list">
@@ -106,7 +106,7 @@
                 <span class="game-title">{{games[4]['long']}}</span>
               </a>
               <span class="pull-right arrow">
-                <img ng-click="move_bloc(4, 3)" src="images/arrow-left" />
+                <img ng-click="move_bloc(4, 3)" src="images/arrow-left.png" />
               </span>
             </div>
             <ul class="articles-list">
