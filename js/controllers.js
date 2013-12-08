@@ -37,7 +37,7 @@ function($scope, $rootScope, $resource, $cookies, $filter) {
     
     $scope.websiteIds = { 'Team aAa': 'teamaaa', 'O Gaming': 'ogaming', 'Millenium': 'millenium', 'Thunderbot': 'thunderbot', 'IEWT': 'iewt'
                         , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'
-                        , 'joinDOTA': 'joindota', 'dota2fr': 'dota2fr'};
+                        , 'joinDOTA': 'joindota', 'dota2fr': 'dota2fr', 'Esport Actu': 'esportactu'};
 
     var request = $resource('http://openesport.herokuapp.com/posts/all');
 
@@ -146,7 +146,7 @@ function($scope, $rootScope, $resource, $cookies, $routeParams, $filter) {
     var gameTitles = { 'lol': 'LEAGUE OF LEGENDS', 'sc2': 'STARCRAFT II', 'dota2': 'DOTA 2', 'csgo': 'COUNTER STRIKE : GO', 'others': 'AUTRES'};
     $scope.websiteIds = { 'Team aAa': 'teamaaa', 'O Gaming': 'ogaming', 'Millenium': 'millenium', 'Thunderbot': 'thunderbot', 'IEWT': 'iewt'
                         , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'
-                        , 'joinDOTA': 'joindota', 'dota2fr': 'dota2fr'};
+                        , 'joinDOTA': 'joindota', 'dota2fr': 'dota2fr', 'Esport Actu': 'esportactu'};
 
     $scope.game_title = gameTitles[$scope.game];
 

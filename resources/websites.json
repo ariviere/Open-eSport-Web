@@ -12,6 +12,10 @@
         "enabled": true 
     }, 
     {
+        "name": "Esport Actu",
+        "enabled": true
+    },
+    {
         "name": "Thunderbot",
         "enabled": true 
     }, 
