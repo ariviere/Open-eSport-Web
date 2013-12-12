@@ -40,6 +40,10 @@
         "enabled": true 
     }, 
     {
+        "name": "Esports Heaven",
+        "enabled": true
+    },
+    {
         "name": "SK Gaming",
         "enabled": true 
     }, 

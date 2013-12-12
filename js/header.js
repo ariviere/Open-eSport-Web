@@ -5,7 +5,7 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', '$cookies', '$r
 	
 	$scope.websiteIds = { 'Team aAa': 'teamaaa', 'O Gaming': 'ogaming', 'Millenium': 'millenium', 'Thunderbot': 'thunderbot', 'IEWT': 'iewt'
                         , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'
-                        , 'joinDOTA': 'joindota', 'dota2fr': 'dota2fr', 'Esport Actu': 'esportactu', 'Esports Express': 'esportsexpress' };
+                        , 'joinDOTA': 'joindota', 'dota2fr': 'dota2fr', 'Esport Actu': 'esportactu', 'Esports Express': 'esportsexpress', 'Esports Heaven': 'esportsheaven' };
 
 	request.query(function(data){
 		$rootScope.websites = data;
