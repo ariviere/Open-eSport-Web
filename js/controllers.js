@@ -8,49 +8,31 @@ articleControllers.controller('ArticleListCtrl', ['$scope', '$rootScope', '$reso
 function($scope, $rootScope, $resource, $cookies, $filter) {
   
     
-    $scope.games = [];
+    // angular.forEach($rootScope.gamesInfo, function(game, i){
+    //     var cookieName = game.id + '_position';
+    //     $cookies[cookieName] = i;
+    // });
 
-    if(typeof $cookies['lolnumber'] != 'undefined')
-        $scope.games[$cookies['lolnumber']] = {'short': 'lol', 'long': 'LEAGUE OF LEGENDS'};
-    else
-        $scope.games[0] = {'short': 'lol', 'long': 'LEAGUE OF LEGENDS'};
+    angular.forEach($rootScope.gamesInfo, function(game, i){
+        var cookieName = game.id + '_position';
+        if(typeof $cookies[cookieName] != 'undefined')
+            game.position = parseInt($cookies[cookieName]);
+    });
 
-    if(typeof $cookies['sc2number'] != 'undefined')
-        $scope.games[$cookies['sc2number']] = {'short': 'sc2', 'long': 'STARCRAFT II'};
-    else
-        $scope.games[1] = {'short': 'sc2', 'long': 'STARCRAFT II'};
-    
-    if(typeof $cookies['dota2number'] != 'undefined')
-        $scope.games[$cookies['dota2number']] = {'short': 'dota2', 'long': 'DOTA 2'};
-    else
-        $scope.games[2] = {'short': 'dota2', 'long': 'DOTA 2'};
-    
-    if(typeof $cookies['csgonumber'] != 'undefined')
-        $scope.games[$cookies['csgonumber']] = {'short': 'csgo', 'long': 'COUNTER STRIKE : GO'};
-    else
-        $scope.games[3] = {'short': 'csgo', 'long': 'COUNTER STRIKE : GO'};
-    
-    if(typeof $cookies['othersnumber'] != 'undefined')
-        $scope.games[$cookies['othersnumber']] = {'short': 'others', 'long': 'AUTRES'};
-    else
-        $scope.games[4] = {'short': 'others', 'long': 'AUTRES'};
-    
-    $scope.websiteIds = { 'Team aAa': 'teamaaa', 'O Gaming': 'ogaming', 'Millenium': 'millenium', 'Thunderbot': 'thunderbot', 'IEWT': 'iewt'
-                        , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'
-                        , 'joinDOTA': 'joindota', 'dota2fr': 'dota2fr', 'Esport Actu': 'esportactu', 'Esports Express': 'esportsexpress', 'Esports Heaven': 'esportsheaven'};
+    var requestArticles = $resource('http://openesport.jit.su/posts/web');
 
-    var request = $resource('http://openesport.herokuapp.com/posts/all');
-
-    request.query(function(articles){
+    var today = new Date();
+    today = today.getDate() + "-" + (today.getMonth() + 1);
+    requestArticles.query(function(articles){
         $rootScope.articles = articles;
 
         angular.forEach(articles, function(article, i){
-            //title
-            if(article.title.length > 62)
-                article.title = article.title.substr(0, 62) + " [...]";
-
             //date
-            article.date = $filter('date')(article.pubDate, 'dd/MM');
+            var articleDayMonth = new Date(article.pubDate).getDate() + "-" + (new Date(article.pubDate).getMonth() +1);
+            if(today === articleDayMonth)
+                article.date = $filter('date')(article.pubDate, 'HH:mm');
+            else
+                article.date = $filter('date')(article.pubDate, 'dd/MM');
 
             if(article.website === "Reddit")
                 article.link = article.link.substr(0, article.link.length-8);
@@ -62,70 +44,76 @@ function($scope, $rootScope, $resource, $cookies, $filter) {
     $rootScope.filterArticles = function(){
         $scope.posts = {};
 
-        $scope.posts.lol = [];
-        $scope.posts.sc2 = [];
-        $scope.posts.dota2 = [];
-        $scope.posts.csgo = [];
-        $scope.posts.others = [];
+        angular.forEach($rootScope.gamesInfo, function(game, i){
+            $scope.posts[game.id] = [];
+        });
 
         angular.forEach($rootScope.articles, function(article, i){
-            angular.forEach($rootScope.websites, function(website, j){
-                if(article.website === website.name && (typeof $cookies[website.name] === 'undefined' || $cookies[website.name] == "true")){
-                    if(article.category === "lol"){
-                        $scope.posts.lol.push(article);
-                    }
-                    else if(article.category === "sc2"){
-                        $scope.posts.sc2.push(article);
-                    }
-                    else if(article.category === "dota2"){
-                        $scope.posts.dota2.push(article);
-                    }
-                    else if(article.category === "csgo"){
-                        $scope.posts.csgo.push(article);
-                    }
-                    else{
+            angular.forEach($rootScope.websites, function(value, key){
+                if(article.website === key && (typeof $cookies[key] === 'undefined' || $cookies[key] == "true")){
+                    var found = false;
+                    angular.forEach($rootScope.gamesInfo, function(game, j){
+                        if(article.category === game.id){
+                            found = true;
+                            $scope.posts[game.id].push(article);
+                        }
+                    });
+
+                    if(!found)
                         $scope.posts.others.push(article)
-                    }
                 }
             });
         });
 
-        $scope.current_page = { 
-            'lol': 0,
-            'sc2': 0,
-            'dota2': 0,
-            'csgo': 0,
-            'others': 0
-        };
-
-        console.log($scope.current_page[$scope.games[0]['short']]);
         $scope.page_size = 12;
 
     }
 
     $scope.move_bloc = function(left, right){
-        var temp = $scope.games[left];
-        $scope.games[left] = $scope.games[right];
-        $scope.games[right] = temp;
+        console.log(left + " " + right);
 
-        var indiceLeft = $scope.games[left].short + 'number';
-        var indiceRight = $scope.games[right].short + 'number';
-        $cookies[indiceLeft] = left.toString();
-        $cookies[indiceRight] = right.toString();
+        var leftGameIndice = gameIndice(left)
+        var rightGameIndice = gameIndice(right);
+
+        angular.forEach($rootScope.gamesInfo, function(game, i){
+            if(game.position == left)
+                leftGameIndice = i;
+            else if(game.position == right)
+                rightGameIndice = i;
+        });
+
+        console.log(leftGameIndice + " " + rightGameIndice);
+        var temp = $rootScope.gamesInfo[leftGameIndice].position;
+        $rootScope.gamesInfo[leftGameIndice].position = $rootScope.gamesInfo[rightGameIndice].position;
+        $rootScope.gamesInfo[rightGameIndice].position = temp;
+
+        var indiceLeft = $rootScope.gamesInfo[leftGameIndice].id + '_position';
+        var indiceRight = $rootScope.gamesInfo[rightGameIndice].id + '_position';
+        console.log(indiceLeft + ":" + right + " " + indiceRight + ":" + left);
+        $cookies[indiceLeft] = right.toString();
+        $cookies[indiceRight] = left.toString();
     }
 
     $scope.previousPage = function(indice){
-        console.log("previousPage " + $scope.games[indice]['short']);
-        $scope.current_page[$scope.games[indice]['short']]=$scope.current_page[$scope.games[indice]['short']]-1;
+        $rootScope.gamesInfo[gameIndice(indice)].page--;
     }
 
     $scope.nextPage = function(indice){
-        console.log("nextPage " + $scope.games[indice]['short']);
-        $scope.current_page[$scope.games[indice]['short']]=$scope.current_page[$scope.games[indice]['short']]+1;
+        $rootScope.gamesInfo[gameIndice(indice)].page++;
     }
-    
-    $scope.orderProp = '-pubDate';
 
+    $scope.orderArticles = '-pubDate';
+    $scope.orderGames = 'position';
+
+    function gameIndice(indice){
+        var result;
+        angular.forEach($rootScope.gamesInfo, function(game, i){
+            if(game.position === indice){
+                result = i;
+            }
+        });
+        return result;
+    }
 }]);
 
 articleControllers.filter('startFrom', function() {
@@ -141,16 +129,16 @@ articleControllers.filter('startFrom', function() {
 articleControllers.controller('ArticleGameCtrl', ['$scope', '$rootScope', '$resource', '$cookies', '$routeParams', '$filter',
 function($scope, $rootScope, $resource, $cookies, $routeParams, $filter) {
 
-    $scope.game = $routeParams.game; 
+    var gameId = $routeParams.game; 
 
-    var gameTitles = { 'lol': 'LEAGUE OF LEGENDS', 'sc2': 'STARCRAFT II', 'dota2': 'DOTA 2', 'csgo': 'COUNTER STRIKE : GO', 'others': 'AUTRES'};
-    $scope.websiteIds = { 'Team aAa': 'teamaaa', 'O Gaming': 'ogaming', 'Millenium': 'millenium', 'Thunderbot': 'thunderbot', 'IEWT': 'iewt'
-                        , 'VaKarM': 'vakarm', 'Reddit': 'reddit', 'onGamers': 'ongamers', 'SK Gaming': 'skgaming', 'HLTV': 'hltv', 'TeamLiquid': 'teamliquid'
-                        , 'joinDOTA': 'joindota', 'dota2fr': 'dota2fr', 'Esport Actu': 'esportactu', 'Esports Express': 'esportsexpress', 'Esports Heaven': 'esportsheaven'};
+    angular.forEach($rootScope.gamesInfo, function(game, i){
+        if(game.id === gameId){
+            console.log("game:" + game.id);
+            $scope.game = game;
+        }
+    });
 
-    $scope.game_title = gameTitles[$scope.game];
-
-    var request = $resource('http://openesport.herokuapp.com/game/' + $scope.game);
+    var request = $resource('http://http://openesport.jit.su/game/' + $scope.game.id);
     
     request.query(function(articles){
         $rootScope.articles = articles;
@@ -165,8 +153,11 @@ function($scope, $rootScope, $resource, $cookies, $routeParams, $filter) {
             else
                 article.author = article.author + " - " + article.website;
 
-            $rootScope.filterArticles();
+            if(article.website === "Reddit")
+                article.link = article.link.substr(0, article.link.length-8);
+
         })
+        $rootScope.filterArticles();
 
     });
 
@@ -174,8 +165,8 @@ function($scope, $rootScope, $resource, $cookies, $routeParams, $filter) {
         $scope.gameArticles = [];
 
         angular.forEach($rootScope.articles, function(article, i){
-            angular.forEach($rootScope.websites, function(website, j){
-                if(article.website === website.name && (typeof $cookies[website.name] === 'undefined' || $cookies[website.name] == "true")){
+            angular.forEach($rootScope.websites, function(value, key){
+                if(article.website === key && (typeof $cookies[key] === 'undefined' || $cookies[key] == "true")){
                     $scope.gameArticles.push(article);
                 }
             });

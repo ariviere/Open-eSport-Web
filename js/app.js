@@ -9,18 +9,23 @@ var articleApp = angular.module('articleApp', [
 	'articleServices'
 ]);
 
-articleApp.config(['$routeProvider',
-	function($routeProvider){
+articleApp.config(['$routeProvider', '$locationProvider',
+	function($routeProvider, $locationProvider){
 		$routeProvider.
 			when('/', {
 				templateUrl: 'partials/articles-list.html',
 				controller: 'ArticleListCtrl'
 			}).
-			when('/:game', {
+			when('/about', {
+				templateUrl: 'partials/about.html'
+			}).
+			when('/game/:game', {
 				templateUrl: 'partials/articles-game.html',
 				controller: 'ArticleGameCtrl'
 			}).
 			otherwise({
-				redirectTo: '/'
+				templateUrl: 'partials/404.html',
 			});
+
+		// $locationProvider.html5Mode(true);
 	}]);

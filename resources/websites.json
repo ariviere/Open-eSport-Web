@@ -1,66 +1,93 @@
-[
-    {
-        "name": "O Gaming",
+{
+    "O Gaming": {
+        "id": "ogaming",
+        "lang": "fr",
         "enabled": true 
     }, 
-    {
-        "name": "Team aAa",
+    "Team aAa": {
+        "id": "teamaaa",
+        "lang": "fr",
         "enabled": true 
     }, 
-    {
-        "name": "Millenium",
+    "Millenium": {
+        "id": "millenium",
+        "lang": "fr",
         "enabled": true 
     }, 
-    {
-        "name": "Esport Actu",
+    "Esport Actu": {
+        "id": "esportactu",
+        "lang": "fr",
         "enabled": true
     },
-    {
-        "name": "Thunderbot",
+    "Thunderbot": {
+        "id": "thunderbot",
+        "lang": "fr",
         "enabled": true 
     }, 
-    {
-        "name": "IEWT",
+    "IEWT": {
+        "id": "iewt",
+        "lang": "fr",
         "enabled": true 
     }, 
-    {
-        "name": "VaKarM",
+    "VaKarM":{
+        "id": "vakarm",
+        "lang": "fr",
         "enabled": true 
     }, 
-    {
+    "dota2fr":{
         "name": "dota2fr",
+        "id": "dota2fr",
+        "lang": "fr",
         "enabled": true 
     }, 
-    {
-        "name": "Reddit",
+    "Reddit":{
+        "id": "reddit",
+        "lang": "en",
         "enabled": true 
     }, 
-    {
-        "name": "onGamers",
+    "onGamers":{
+        "id": "ongamers",
+        "lang": "en",
         "enabled": true 
     }, 
-    {
-        "name": "Esports Heaven",
+    "Esports Heaven":{
+        "id": "esportsheaven",
+        "lang": "en",
         "enabled": true
     },
-    {
-        "name": "SK Gaming",
+    "SK Gaming":{
+        "id": "skgaming",
+        "lang": "en",
         "enabled": true 
     }, 
-    {
-        "name": "HLTV",
+    "HLTV":{
+        "id": "hltv",
+        "lang": "en",
         "enabled": true 
     }, 
-    {
-        "name": "TeamLiquid",
+    "TeamLiquid":{
+        "id": "teamliquid",
+        "lang": "en",
         "enabled": true 
     },
-    {
-        "name": "joinDOTA",
+    "joinDOTA":{
+        "id": "joindota",
+        "lang": "en",
         "enabled": true 
     },
-    {
-        "name": "Esports Express",
+    "Esports Express":{
+        "id": "esportsexpress",
+        "lang": "en",
+        "enabled": true
+    },
+    "Shoryuken":{
+        "id": "shoryuken",
+        "lang": "en",
+        "enabled": true
+    },
+    "ESReality":{
+        "id": "esreality",
+        "lang": "en",
         "enabled": true
     }
-]
+}

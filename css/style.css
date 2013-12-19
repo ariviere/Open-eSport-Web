@@ -1,7 +1,23 @@
 body{
-	padding-top: 80px;
+	/*padding-top: 65px;*/
 	font-family: helvetica;
 	background: #dddddc url("../images/pattern-bg.png") repeat scroll 50% 50%;
+}
+
+.container{
+	padding: auto 0;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	font-family: 'Oxygen', sans-serif;
+	color:#A9A9A9;
+	font-size: 12px;
+	letter-spacing: 0.5px;
+}
+
+.dropdown-menu>li>a{
+	font-family: 'Oxygen', sans-serif;
+	font-size:12px;
 }
 
 .game-title{
@@ -14,21 +30,28 @@ body{
 .game-title:hover{
 	text-decoration:none;
 }
+
 .game-title-container{
 	margin: 10px 10px 0;
 }
 
+.game-title-container a{
+	text-decoration: none;
+}
+
+.navbar-high{
+	margin-bottom: 0;
+}
 .inner {
     padding: 0.5em;
     border-radius: 0.2em;
-    margin-left:10px;
-    margin-bottom:5px;
-    margin-top:5px;
+    margin: 3px 0;
     opacity: 0.2;
+	cursor: pointer;
 }
 
 .inner:hover {
-    background: #3a3a3a;
+    background: #fff;
 }
 
 .inner:active {
@@ -57,12 +80,18 @@ body{
 .game-column{
 	border: 1px solid #c5c5c5;
 	background-color: #fff;
-	min-height: 552px;
+}
+
+.filter-column{
+	padding:2px 0;
+	text-align: center;
+	background-color: #dddddc;
 }
 
 .about-column{
 	border: 1px solid #c5c5c5;
 	background-color: #fff;
+	margin-bottom:20px;
 }
 
 .game-column ul{
@@ -72,7 +101,14 @@ body{
 }
 
 .articles-list li{
-    padding: 10px 10px;
+    padding: 8px 10px;
+
+}
+
+.one-line-title{
+	white-space:nowrap;
+    overflow:hidden;
+    margin-right: 10px;
 }
 
 .articles-list li:hover{
@@ -104,11 +140,14 @@ body{
 
 .game-icon {
 	margin: 5px 7px;
+	padding: 0 10px;
 	cursor: pointer;
+	border:1px #292929 solid;
+	background-color: #343434;
 }
 
 .about_text{
-	margin: 5px 15px;
+	margin: 5px 10px;
 }
 
 .imgh2{
@@ -117,7 +156,7 @@ body{
 }
 
 .navbar-brand {
-	padding: 5px 0 5px 25px;
+	padding: 1px 25px 1px 25px;
 	margin: 5px 0;
 }
 
@@ -130,7 +169,8 @@ body{
 }
 .pagination-container button{
 	text-align: center;
-	color:#494949;
+	font-family: 'Oxygen', sans-serif;
+	color:#878787;
 	border:0;
 	width:49%;
 	margin: 0 0 1px 0;
@@ -156,7 +196,7 @@ button:hover{
   display: none !important;
 }
 
-@media screen and (max-width: 1000px){
+/*@media screen and (max-width: 1000px){
 	body{
 		padding-top: 0;
 	}
@@ -168,7 +208,7 @@ button:hover{
     .navbar-high{
     	display:none;
     }
-}
+}*/
 
 .filter_title{
 	cursor:default;
@@ -179,4 +219,14 @@ button:hover{
 
 .arrow{
 	cursor:pointer;
+}
+
+.scroller_anchor{height:0px; margin:0; padding:0;}
+
+.scroller{
+	z-index:100; 
+}
+
+.dropdown-menu>li>a{
+	padding-left: 10px
 }

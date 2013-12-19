@@ -1,22 +1,50 @@
 [
     {
-        "name": "League of Legends",
-        "id": "lol"
+        "name":"LEAGUE OF LEGENDS",
+        "id":"lol",
+        "page":"0",
+        "position":"1"
     }, 
     {
-        "name": "Starcraft 2",
-        "id": "sc2"
+        "name":"STARCRAFT 2",
+        "id":"sc2",
+        "page":"0",
+        "position":"2"
     }, 
     {
-        "name": "DotA 2",
-        "id": "dota2"
+        "name":"DOTA 2",
+        "id":"dota2",
+        "page":"0",
+        "position":"3"
     }, 
     {
-        "name": "Countrer Strike: GO",
-        "id": "csgo"
+        "name":"COUNTER STRIKE: GO",
+        "id":"csgo",
+        "page":"0",
+        "position":"4"
     }, 
     {
-        "name": "Autres",
-        "id": "others"
+        "name":"VERSUS FIGHTING",
+        "id":"versus",
+        "page":"0",
+        "position":"5"
+    }, 
+    {
+        "name":"QUAKELIVE",
+        "id":"ql",
+        "page":"0",
+        "position":"6"
+    }, 
+    {
+        "name":"HEARTHSTONE",
+        "id":"hearthstone",
+        "page":"0",
+        "position":"7"
+    }, 
+    {
+        "name":"AUTRES",
+        "id":"others",
+        "page":"0",
+        "position":"8"
     }
 ]

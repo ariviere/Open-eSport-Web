@@ -1,22 +1,50 @@
-<div class="navbar navbar-inverse navbar-fixed-top navbar-high" role="navigation">
-  <div class="container" >
-    <a style="display:inline" class="navbar-brand" href="#"><img src="images/logo.png" alt="Open eSport"></a>
-    <div class="game-icon pull-right" style="display:inline" >
-      <div ng-repeat="website in websites" style="display:inline">
-        <img class="inner" ng-class="{active:website.enabled}" ng-src="images/{{websiteIds[website.name]}}_28.png" alt="{{website.name}}" title="{{website.name}}" ng-click="showWebsite(website.name)"></a>
+<div id="navbar">
+
+  <div class="navbar navbar-inverse navbar-static-top navbar-high" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a style="display:inline" class="navbar-brand" href="#"><img src="images/logo.png" alt="Open eSport"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">PORTAILS <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li style="padding: 4px 0; margin:0" ng-repeat="game in gamesInfo">
+                <a href="#/game/{{game.id}}"><img ng-src="images/{{game.id}}.png" width="24" height="24" /> <span style="padding-left:6px">{{game.name}}</span></a>
+              </li>
+            </ul>
+          </li>
+          
+          <li><a target="_blank" href="https://play.google.com/store/apps/details?id=com.ar.oe">APP ANDROID</a></li>
+          <li><a href="#/about">À PROPOS</a></li>
+          <li><a target="_blank" href="https://twitter.com/openesport">@OPENESPORT</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+
+  </div>  
+</div>
+
+<div class="scroller_anchor"></div>
+<div class="scroller">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="filter-column">
+            <div ng-repeat="websiteName in websitesArray" style="display:inline">
+              <img class="inner" ng-class="{active:websites[websiteName].enabled}" ng-src="images/{{websites[websiteName].id}}_28.png" alt="{{websites[websiteName].name}}" title="{{websites[websiteName].name}}" ng-click="showWebsite(websiteName)"></a>
+            </div>
+        </div>
       </div>
     </div>
   </div>
-    
-  </div>
-<div class="navbar navbar-inverse navbar-static-top navbar-small" role="navigation">
-  <div class="container" >
-    <a style="display:inline" class="navbar-brand" href="#"><img src="images/logo.png" alt="Open eSport"></a>
-    <div class="game-icon pull-right" style="display:inline" >
-      <div ng-repeat="website in websites" style="display:inline">
-        <img class="inner" ng-class="{active:website.enabled}" ng-src="images/{{websiteIds[website.name]}}_28.png" alt="{{website.name}}" title="{{website.name}}" ng-click="showWebsite(website.name)"></a>
-      </div>
-    </div>
-  </div>
-    
-  </div>
+</div>

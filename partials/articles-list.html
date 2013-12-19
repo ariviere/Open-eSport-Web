@@ -1,141 +1,29 @@
 <div class="container">
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="game-column column-left">
-            <div class="game-title-container">
-              <a href="#/{{games[0]['short']}}">
-                <img src="images/{{games[0]['short']}}.png" class="imgh2" />
-                <span class="game-title">{{games[0]['long']}}</span>
-              </a>
-            <span class="pull-right arrow"><img ng-click="move_bloc(0, 1)" src="images/arrow-right.png" /></span>
-            </div>
-            <ul class="articles-list">
-              <li ng-repeat="article in posts[games[0]['short']] | orderBy:orderProp | startFrom:current_page[games[0]['short']]*page_size | limitTo:page_size">
-                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_16.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
-              </li>
-            </ul>
-            <div class="pagination-container">
-              <button ng-disabled="current_page[games[0]['short']] == 0" ng-click="previousPage(0)">&laquo;</button>
-              <button ng-disabled="current_page[games[0]['short']] >= posts[games[0]['short']].length/page_size - 1" ng-click="nextPage(0)">&raquo;</button>
-            </div>
+    <div ng-repeat="game in gamesInfo | orderBy:orderGames">
+      
+      <div class="col-md-6">
+        <div class="game-column">
+          <div class="game-title-container">
+            <a href="#/game/{{game.id}}">
+              <img ng-src="images/{{game.id}}.png" class="imgh2" />
+              <span class="game-title">{{game.name}}</span>
+            </a>
+          <span ng-if="$index != gamesInfo.length-1" class="pull-right arrow"><img ng-click="move_bloc(game.position, game.position+1)" src="images/arrow-right.png" /></span>
+          <span ng-if="$index != 0" class="pull-right arrow"><img ng-click="move_bloc(game.position, game.position-1)" src="images/arrow-left.png" /></span>
           </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="game-column column-right">
-            <div class="game-title-container">
-              <a href="#/{{games[1]['short']}}">
-                <img src="images/{{games[1]['short']}}.png" class="imgh2" />
-                <span class="game-title">{{games[1]['long']}}</span>
-              </a>
-            <span class="pull-right arrow">
-              <img ng-click="move_bloc(1, 0)" src="images/arrow-left.png" />
-              <img ng-click="move_bloc(1, 2)" src="images/arrow-right.png" />
-            </span>
-            </div>
-            <ul class="articles-list">
-              <li ng-repeat="article in posts[games[1]['short']] | orderBy:orderProp | startFrom:current_page[games[1]['short']]*page_size | limitTo:page_size">
-                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_16.png" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
-              </li>
-            </ul>
-            <div class="pagination-container">
-              <button ng-disabled="current_page[games[1]['short']] == 0" ng-click="current_page[games[1]['short']]=current_page[games[1]['short']]-1">&laquo;</button>
-              <button ng-disabled="current_page[games[1]['short']] >= posts[games[1]['short']].length/page_size - 1" ng-click="current_page[games[1]['short']]=current_page[games[1]['short']]+1">&raquo;</button>
-            </div>
-          </div>
-       </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="game-column column-left">
-            <div class="game-title-container">
-              <a href="#/{{games[2]['short']}}">
-                <img src="images/{{games[2]['short']}}.png" class="imgh2" />
-                <span class="game-title">{{games[2]['long']}}</span>
-              </a>
-              <span class="pull-right arrow">
-                <img ng-click="move_bloc(2, 1)" src="images/arrow-left.png" />
-                <img ng-click="move_bloc(2, 3)" src="images/arrow-right.png" />
-              </span>
-            </div>
-            <ul class="articles-list">
-              <li ng-repeat="article in posts[games[2]['short']] | orderBy:orderProp | startFrom:current_page[games[2]['short']]*page_size | limitTo:page_size">
-                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_16.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
-              </li>
-            </ul>
-            <div class="pagination-container">
-              <button ng-disabled="current_page[games[2]['short']] == 0" ng-click="current_page[games[2]['short']]=current_page[games[2]['short']]-1">&laquo;</button>
-              <button ng-disabled="current_page[games[2]['short']] >= posts[games[2]['short']].length/page_size - 1" ng-click="current_page[games[2]['short']]=current_page[games[2]['short']]+1">&raquo;</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="game-column column-right">
-            <div class="game-title-container">
-              <a href="#/{{games[3]['short']}}">
-                <img src="images/{{games[3]['short']}}.png" class="imgh2" />
-                <span class="game-title">{{games[3]['long']}}</span>
-              </a>
-              <span class="pull-right arrow">
-                <img ng-click="move_bloc(3, 2)" src="images/arrow-left.png" />
-                <img ng-click="move_bloc(3, 4)" src="images/arrow-right.png" />
-              </span>
-            </div>
-            <ul class="articles-list">
-              <li ng-repeat="article in posts[games[3]['short']] | orderBy:orderProp | startFrom:current_page[games[3]['short']]*page_size | limitTo:page_size">
-                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_16.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
-              </li>
-            </ul>
-            <div class="pagination-container">
-              <button ng-disabled="current_page[games[3]['short']] == 0" ng-click="current_page[games[3]['short']]=current_page[games[3]['short']]-1">&laquo;</button>
-              <button ng-disabled="current_page[games[3]['short']] >= posts[games[3]['short']].length/page_size - 1" ng-click="current_page[games[3]['short']]=current_page[games[3]['short']]+1">&raquo;</button>
-            </div>
+          <ul class="articles-list">
+            <li ng-repeat="article in posts[game.id] | orderBy:orderArticles | startFrom:game.page*page_size | limitTo:page_size">
+              <div class="one-line-title">
+                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websites[article.website].id}}_16.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
+              </div>
+            </li>
+          </ul>
+          <div class="pagination-container">
+            <button ng-disabled="game.page == 0" ng-click="previousPage($index)"><</button>
+            <button ng-disabled="game.page >= posts[game.id].length/page_size - 1" ng-click="nextPage($index)">></button>
           </div>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-6">
-          <div class="game-column column-left">
-            <div class="game-title-container">
-              <a href="#/{{games[4]['short']}}">
-                <img ng-src="images/{{games[4]['short']}}.png" class="imgh2" />
-                <span class="game-title">{{games[4]['long']}}</span>
-              </a>
-              <span class="pull-right arrow">
-                <img ng-click="move_bloc(4, 3)" src="images/arrow-left.png" />
-              </span>
-            </div>
-            <ul class="articles-list">
-              <li ng-repeat="article in posts[games[4]['short']] | orderBy:orderProp | startFrom:current_page[games[4]['short']]*page_size | limitTo:page_size">
-                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websiteIds[article.website]}}_16.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
-              </li>
-            </ul>
-            <div class="pagination-container">
-              <button ng-disabled="current_page[games[4]['short']] == 0" ng-click="current_page[games[4]['short']]=current_page[games[4]['short']]-1">&laquo;</button>
-              <button ng-disabled="current_page[games[4]['short']] >= posts[games[4]['short']].length/page_size - 1" ng-click="current_page[games[4]['short']]=current_page[games[4]['short']]+1">&raquo;</button>
-            </div>
-          </div>
-       </div>
-        <div class="col-md-6">
-          <div class="about-column column-right">
-            <div class="game-title-container">
-                <img src="images/oe_logo_30.png" class="imgh2" />
-                <span class="game-title">À PROPOS</span>
-            </div>
-            <div class="about_text">
-              <p>Retrouvez les dernières mises à jour avec <a href="http://www.twitter.com/OpeneSport" target="_blank">@OpeneSport</a> sur Twitter et contactez moi par mail à antoine[arobase]riviere[point]tf (je réponds toujours :))</p>
-
-              <p>Les sites disponibles sont dans l'ordre des filtres : O'Gaming, Team aAa, Millenium, Esport Actu, Thunderbot, In Esport We Trust, VaKarM, dota2fr, Reddit, onGamers, SK Gaming, HLTV, TeamLiquid, joinDOTA et Esports Express. Merci à Stephane 'deKey' Sanchez pour le logo et à Edouard 'xiN' Forgeau pour ses retours.</p><br />
-
-              <p>Open eSport est également disponible sur smartphones et tablettes Android. Rendez-vous sur le Play Store.</p><br />
-
-              <div style="text-align:center; margin: 10px 0;"><a href="https://play.google.com/store/apps/details?id=com.ar.oe" target="_blank"><img src="images/android_logo.png" /><a/></div><br />
-              
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+</div>
