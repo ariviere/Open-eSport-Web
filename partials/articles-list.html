@@ -8,8 +8,8 @@
               <img ng-src="images/{{game.id}}.png" class="imgh2" />
               <span class="game-title">{{game.name}}</span>
             </a>
-          <span ng-if="$index != gamesInfo.length-1" class="pull-right arrow"><img ng-click="move_bloc(game.position, game.position+1)" src="images/arrow-right.png" /></span>
-          <span ng-if="$index != 0" class="pull-right arrow"><img ng-click="move_bloc(game.position, game.position-1)" src="images/arrow-left.png" /></span>
+          <span ng-if="$index != gamesInfo.length-1" class="pull-right arrow"><img ng-click="move_bloc(game.position, 'right')" src="images/arrow-right.png" /></span>
+          <span ng-if="$index != 0" class="pull-right arrow"><img ng-click="move_bloc(game.position, 'left')" src="images/arrow-left.png" /></span>
           </div>
           <ul class="articles-list">
             <li class="home-articles-list" ng-repeat="article in posts[game.id] | orderBy:orderArticles | startFrom:game.page*page_size | limitTo:page_size">

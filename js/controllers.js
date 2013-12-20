@@ -10,7 +10,7 @@ function($scope, $rootScope, $resource, $cookies, $filter) {
     
     // angular.forEach($rootScope.gamesInfo, function(game, i){
     //     var cookieName = game.id + '_position';
-    //     $cookies[cookieName] = i;
+    //     $cookies[cookieName] = (i+1).toString();
     // });
 
     angular.forEach($rootScope.gamesInfo, function(game, i){
@@ -70,16 +70,17 @@ function($scope, $rootScope, $resource, $cookies, $filter) {
 
     }
 
-    $scope.move_bloc = function(left, right){
+    $scope.move_bloc = function(left, direction){
+        var right;
+
+        if(direction === "left"){
+            right = (parseInt(left)-1).toString();
+        }else if(direction === "right"){
+            right = (parseInt(left)+1).toString();
+        }
+
         var leftGameIndice = gameIndice(left)
         var rightGameIndice = gameIndice(right);
-
-        angular.forEach($rootScope.gamesInfo, function(game, i){
-            if(game.position == left)
-                leftGameIndice = i;
-            else if(game.position == right)
-                rightGameIndice = i;
-        });
 
         var temp = $rootScope.gamesInfo[leftGameIndice].position;
         $rootScope.gamesInfo[leftGameIndice].position = $rootScope.gamesInfo[rightGameIndice].position;
