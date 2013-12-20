@@ -192,7 +192,7 @@ function($scope, $rootScope, $resource, $cookies, $routeParams, $filter) {
             );
         });
 
-        if($scope.gameStreams.length == 0){
+        if($scope.gameStreams.length === 0 || $scope.gameStreams == []){
             $scope.hideStreams = true;
             console.log($scope.gameStreams.length);
         }
