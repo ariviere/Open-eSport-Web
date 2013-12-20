@@ -31,5 +31,5 @@ articleApp.config(['$routeProvider', '$locationProvider',
 				templateUrl: 'partials/404.html',
 			});
 
-		// $locationProvider.html5Mode(true);
+		$locationProvider.html5Mode(true);
 	}]);
