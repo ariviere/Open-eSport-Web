@@ -10,7 +10,7 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', '$cookies', '$r
 			$scope.websitesArray.push(key);
 
             if($cookies[key] === 'false'){
-				$rootScope.websites.key.enabled = false;
+				$rootScope.websites[key].enabled = false;
 			}
 		});
 	});
@@ -23,6 +23,7 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', '$cookies', '$r
 		angular.forEach($rootScope.websites, function(value, key){
 			if(website_selected === key){
 				$rootScope.websites[key].enabled = !$rootScope.websites[key].enabled;
+				console.log(key);
 				$cookies[key] = $rootScope.websites[key].enabled.toString();
 			}
 		});

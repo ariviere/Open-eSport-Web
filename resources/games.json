@@ -2,48 +2,56 @@
     {
         "name":"LEAGUE OF LEGENDS",
         "id":"lol",
+        "twitch_name":"League+of+Legends",
         "page":"0",
         "position":"1"
     }, 
     {
         "name":"STARCRAFT 2",
         "id":"sc2",
+        "twitch_name":"StarCraft+II:+Heart+of+the+Swarm",
         "page":"0",
         "position":"2"
     }, 
     {
         "name":"DOTA 2",
         "id":"dota2",
+        "twitch_name":"Dota+2",
         "page":"0",
         "position":"3"
     }, 
     {
         "name":"COUNTER STRIKE: GO",
         "id":"csgo",
+        "twitch_name":"Counter-Strike:+Global+Offensive",
         "page":"0",
         "position":"4"
     }, 
     {
         "name":"VERSUS FIGHTING",
         "id":"versus",
+        "twitch_name":null,
         "page":"0",
         "position":"5"
     }, 
     {
         "name":"QUAKELIVE",
         "id":"ql",
+        "twitch_name":null,
         "page":"0",
         "position":"6"
     }, 
     {
         "name":"HEARTHSTONE",
         "id":"hearthstone",
+        "twitch_name":"Hearthstone:+Heroes+of+Warcraft",
         "page":"0",
         "position":"7"
     }, 
     {
         "name":"AUTRES",
         "id":"others",
+        "twitch_name":null,
         "page":"0",
         "position":"8"
     }

@@ -2,7 +2,7 @@
     <div ng-repeat="game in gamesInfo | orderBy:orderGames">
       
       <div class="col-md-6">
-        <div class="game-column">
+        <div class="game-column game-home-bloc">
           <div class="game-title-container">
             <a href="#/game/{{game.id}}">
               <img ng-src="images/{{game.id}}.png" class="imgh2" />
@@ -12,15 +12,15 @@
           <span ng-if="$index != 0" class="pull-right arrow"><img ng-click="move_bloc(game.position, game.position-1)" src="images/arrow-left.png" /></span>
           </div>
           <ul class="articles-list">
-            <li ng-repeat="article in posts[game.id] | orderBy:orderArticles | startFrom:game.page*page_size | limitTo:page_size">
+            <li class="home-articles-list" ng-repeat="article in posts[game.id] | orderBy:orderArticles | startFrom:game.page*page_size | limitTo:page_size">
               <div class="one-line-title">
                 <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websites[article.website].id}}_16.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
               </div>
             </li>
           </ul>
           <div class="pagination-container">
-            <button ng-disabled="game.page == 0" ng-click="previousPage($index)"><</button>
-            <button ng-disabled="game.page >= posts[game.id].length/page_size - 1" ng-click="nextPage($index)">></button>
+            <button ng-disabled="game.page == 0" ng-click="previousPage(game.position)"><</button>
+            <button ng-disabled="game.page >= posts[game.id].length/page_size - 1" ng-click="nextPage(game.position)">></button>
           </div>
         </div>
       </div>

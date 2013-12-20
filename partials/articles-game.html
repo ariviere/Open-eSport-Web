@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <!-- <div class="col-md-7">
       <div class="game-column">
         <div class="game-title-container">
           <img ng-src="images/{{game.id}}.png" class="imgh2" />
@@ -10,11 +10,64 @@
           <li ng-repeat="article in gameArticles | filter:query | orderBy:orderProp">
             <a target="_blank" href="{{article.link}}">
               <div class="pull-left" style="position:absolute; padding-top:8px"><img ng-src="images/{{websites[article.website].id}}_24.png" /></div> 
-              <div style="position:relative; padding-left:33px">{{article.title}} <br />
+                <div style="position:relative; padding-left:33px">{{article.title}}<br />
               <span class="article-date">{{article.date}}</span> par <span class="article-date">{{article.author}}</span></div>
             </a>
           </li>
         </ul>
+      </div>
+    </div> -->
+
+    <div ng-class="(!hideStreams) ? 'col-md-7' : 'col-md-8 col-md-offset-2'">
+    <!-- <div class="col-md-7"> -->
+      <div class="game-column game-portail-bloc">
+        <div class="game-title-container">
+          <img ng-src="images/{{game.id}}.png" class="imgh2" />
+          <span class="game-title">{{game.name}}</span>
+        </div>
+        <ul class="articles-list">
+          <li class="game-articles-list" ng-repeat="article in gameArticles | orderBy:orderArticles | startFrom:game.page*articles_page_size | limitTo:articles_page_size">
+            <a target="_blank" href="{{article.link}}">
+              <div class="one-line-title">
+                <div class="pull-left" style="position:absolute; padding-top:8px"><img ng-src="images/{{websites[article.website].id}}_24.png" /></div> 
+                  <div class="one-line-title">
+                    <div style="position:relative; padding-left:33px">{{article.title}}</div>
+                  </div>
+                  <div style="position:relative; padding-left:33px" class="article-date">{{article.date}}</span> par <span class="article-date">{{article.author}}</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <div class="pagination-container">
+          <button ng-disabled="game.page == 0" ng-click="previousPage('articles')"><</button>
+          <button ng-disabled="game.page >= gameArticles.length/articles_page_size - 1" ng-click="nextPage('articles')">></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="game-column game-portail-bloc">
+        <div class="game-title-container">
+          <img ng-src="images/tv.png" class="imgh2" />
+          <span class="game-title">STREAMS</span>
+        </div>
+        <div>
+        <ul class="articles-list">
+          <li class="home-articles-list" ng-repeat="stream in gameStreams | orderBy:orderStreams | startFrom:streamPage*streams_page_size | limitTo:streams_page_size">
+            <a target="_blank" href="{{stream.link}}">
+              <div class="pull-left" style="position:absolute; padding-top:8px"><img ng-src="{{stream.img}}" width="26" height="26" /></div> 
+              <div class="one-line-title">
+                <div style="position:relative; padding-left:33px">{{stream.status}}</div>
+              </div>
+              <div style="position:relative; padding-left:33px" class="article-date">{{stream.viewers}} spectateurs avec {{stream.name}}</div>
+            </a>
+          </li>
+        </ul>
+        </div>
+        <div class="pagination-container">
+          <button ng-disabled="streamPage == 0" ng-click="previousPage('streams')"><</button>
+          <button ng-disabled="streamPage >= gameStreams.length/streams_page_size - 1" ng-click="nextPage('streams')">></button>
+        </div>
       </div>
     </div>
   </div>

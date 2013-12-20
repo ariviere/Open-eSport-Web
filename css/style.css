@@ -63,16 +63,6 @@ body{
     opacity: 1;
 }
 
-
-.tooltip{
-	margin:8px;
-	padding:8px;
-	border:1px solid blue;
-	background-color:yellow;
-	position: absolute;
-	z-index: 2;
-}
-
 #hint{
 	cursor:pointer;
 }
@@ -80,6 +70,14 @@ body{
 .game-column{
 	border: 1px solid #c5c5c5;
 	background-color: #fff;
+}
+
+.game-home-bloc{
+	min-height: 505px;
+}
+
+.game-portail-bloc{
+	min-height: 731px;
 }
 
 .filter-column{
@@ -100,9 +98,12 @@ body{
 	margin:0 0 26px 0;
 }
 
-.articles-list li{
+.home-articles-list{
     padding: 8px 10px;
+}
 
+.game-articles-list{
+    padding: 5px 10px;
 }
 
 .one-line-title{
@@ -134,7 +135,7 @@ body{
     vertical-align: middle;
 }
 
-.col-md-6, .col-md-8{
+.col-md-6, .col-md-8, .col-md-5, .col-md-7{
 	margin-bottom:20px;
 }
 

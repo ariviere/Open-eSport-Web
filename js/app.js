@@ -23,6 +23,10 @@ articleApp.config(['$routeProvider', '$locationProvider',
 				templateUrl: 'partials/articles-game.html',
 				controller: 'ArticleGameCtrl'
 			}).
+			when('/stream/:game', {
+				templateUrl: 'partials/streams-game.html',
+				controller: 'StreamGameCtrl'
+			}).
 			otherwise({
 				templateUrl: 'partials/404.html',
 			});
