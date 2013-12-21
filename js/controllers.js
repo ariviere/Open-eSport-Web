@@ -175,11 +175,13 @@ function($scope, $rootScope, $resource, $cookies, $routeParams, $filter) {
     
     var streamsUrl;
 
-    // if($scope.game.twitch_id === null)
-    //     streamsUrl = "https://api.twitch.tv/kraken/streams?callback=?";
-    // else
+    if($scope.game.twitch_name === "autres")
+        streamsUrl = "https://api.twitch.tv/kraken/streams?callback=?";
+    else
         streamsUrl = "https://api.twitch.tv/kraken/streams?game=" + $scope.game.twitch_name + "&callback=?";
 
+    console.log(streamsUrl);
+    
     $.getJSON(streamsUrl, function (data) {
         angular.forEach(data.streams, function(item, index){
             var stream = {};

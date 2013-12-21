@@ -30,14 +30,14 @@
     {
         "name":"VERSUS FIGHTING",
         "id":"versus",
-        "twitch_name":null,
+        "twitch_name":"Super+Street+Fighter+IV",
         "page":"0",
         "position":"5"
     }, 
     {
         "name":"QUAKELIVE",
         "id":"ql",
-        "twitch_name":null,
+        "twitch_name":"Quake+Live",
         "page":"0",
         "position":"6"
     }, 
@@ -51,7 +51,7 @@
     {
         "name":"AUTRES",
         "id":"others",
-        "twitch_name":null,
+        "twitch_name":"autres",
         "page":"0",
         "position":"8"
     }
