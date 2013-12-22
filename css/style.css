@@ -231,3 +231,16 @@ button:hover{
 .dropdown-menu>li>a{
 	padding-left: 10px
 }
+
+#footer{
+	color:#777;
+	font-family: 'Oxygen', sans-serif;
+	text-align:center;
+	font-size: 12px;
+	margin-bottom:10px;
+}
+
+#footer a{
+	color:#777;
+	text-decoration: none;
+}
