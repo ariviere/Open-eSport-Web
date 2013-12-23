@@ -12,12 +12,12 @@ articleServices.factory('GameArticle', ['$resource',
 
 articleServices.factory('Game', ['$resource',
 	function($resource){
-		return $resource('resources/games.json');
+		return $resource('app/resources/games.json');
 	}]);
 
 var headerServices = angular.module('headerServices', ['ngResource']);
 
 headerServices.factory('HeaderWebsiteService', ['$resource',
 	function($resource){
-		return $resource('resources/websites.json');
+		return $resource('app/resources/websites.json');
 	}]);

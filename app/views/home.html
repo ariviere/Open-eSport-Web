@@ -6,7 +6,7 @@
           <div class="game-title-container">
             <a href="#/game/{{game.id}}">
               <img ng-src="images/{{game.id}}.png" class="imgh2" />
-              <span class="game-title">{{game.name}}</span>
+              <span ng-bind="game.name" class="game-title"></span>
             </a>
           <span ng-if="$index != gamesInfo.length-1" class="pull-right arrow"><img ng-click="move_bloc(game.position, 'right')" src="images/arrow-right.png" /></span>
           <span ng-if="$index != 0" class="pull-right arrow"><img ng-click="move_bloc(game.position, 'left')" src="images/arrow-left.png" /></span>
@@ -14,7 +14,7 @@
           <ul class="articles-list">
             <li class="home-articles-list" ng-repeat="article in posts[game.id] | orderBy:orderArticles | startFrom:game.page*page_size | limitTo:page_size">
               <div class="one-line-title">
-                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websites[article.website].id}}_16.png" height="16" width="16" /> <span class="article-date">{{article.date}}</span> {{article.title}}</a>
+                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websites[article.website].id}}_16.png" height="16" width="16" /> <span ng-bind="article.date" class="article-date"></span> <span ng-bind="article.title"></span></a>
               </div>
             </li>
           </ul>

@@ -3,7 +3,7 @@ var headerControllers = angular.module('headerControllers', ['ngCookies']);
 headerControllers.controller('navCtrl', ['$scope', '$rootScope', '$cookies', '$resource', '$http', function($scope, $rootScope, $cookies, $resource, $http) {
 	var request = $resource('resources/websites.json', {});
 	
-	$http.get('resources/websites.json').success(function(data) {
+	$http.get('app/resources/websites.json').success(function(data) {
 		$rootScope.websites = data;
 		$scope.websitesArray = [];
 		angular.forEach($rootScope.websites, function(value, key){
@@ -15,7 +15,7 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', '$cookies', '$r
 		});
 	});
 
-	$http.get('resources/games.json').success(function(data) {
+	$http.get('app/resources/games.json').success(function(data) {
 		$rootScope.gamesInfo = data;
 	});
 

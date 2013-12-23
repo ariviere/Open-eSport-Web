@@ -23,7 +23,7 @@
       <div class="game-column game-portail-bloc">
         <div class="game-title-container">
           <img ng-src="images/{{game.id}}.png" class="imgh2" />
-          <span class="game-title">{{game.name}}</span>
+          <span class="game-title" ng-bind="game.name"></span>
         </div>
         <ul class="articles-list">
           <li class="game-articles-list" ng-repeat="article in gameArticles | orderBy:orderArticles | startFrom:game.page*articles_page_size | limitTo:articles_page_size">
@@ -31,9 +31,9 @@
               <div class="one-line-title">
                 <div class="pull-left" style="position:absolute; padding-top:8px"><img ng-src="images/{{websites[article.website].id}}_24.png" /></div> 
                   <div class="one-line-title">
-                    <div style="position:relative; padding-left:33px">{{article.title}}</div>
+                    <div ng-bind="article.title" style="position:relative; padding-left:33px"></div>
                   </div>
-                  <div style="position:relative; padding-left:33px" class="article-date">{{article.date}}</span> par <span class="article-date">{{article.author}}</div>
+                  <div style="position:relative; padding-left:33px" class="article-date"><span ng-bind="article.date"></span> par <span ng-bind="article.author" class="article-date"></span></div>
               </div>
             </a>
           </li>
@@ -57,9 +57,9 @@
             <a target="_blank" href="{{stream.link}}">
               <div class="pull-left" style="position:absolute; padding-top:8px"><img ng-src="{{stream.img}}" width="26" height="26" /></div> 
               <div class="one-line-title">
-                <div style="position:relative; padding-left:33px">{{stream.status}}</div>
+                <div ng-bind="stream.status" style="position:relative; padding-left:33px"></div>
               </div>
-              <div style="position:relative; padding-left:33px" class="article-date">{{stream.viewers}} spectateurs avec {{stream.name}}</div>
+              <div style="position:relative; padding-left:33px" class="article-date"><span ng-bind="stream.viewers"></span> spectateurs avec <span ng-bind="stream.name"></span></div>
             </a>
           </li>
         </ul>
