@@ -19,7 +19,7 @@
             <a href="" class="dropdown-toggle" data-toggle="dropdown">PORTAILS <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li style="padding: 4px 0; margin:0" ng-repeat="game in gamesInfo">
-                <a ng-bind="game.name" href="#/game/{{game.id}}"><img ng-src="images/{{game.id}}.png" width="24" height="24" /> <span style="padding-left:6px"></span></a>
+                <a href="#/game/{{game.id}}"><img ng-src="images/{{game.id}}.png" width="24" height="24" /> <span ng-bind="game.name" style="padding-left:6px"></span></a>
               </li>
             </ul>
           </li>
