@@ -1,13 +1,13 @@
 var gameController = angular.module('gameController', []);
 
-gameController.controller('GameCtrl', ['$scope', '$rootScope', '$resource', '$cookies', '$routeParams', '$filter',
-function($scope, $rootScope, $resource, $cookies, $routeParams, $filter) {
+gameController.controller('GameCtrl', ['$scope', '$rootScope', '$resource', '$routeParams', '$filter',
+function($scope, $rootScope, $resource, $routeParams, $filter) {
 
     var gameId = $routeParams.game; 
     $scope.hideStreams = false;
 
-    $scope.articles_page_size = 14;
-    $scope.streams_page_size = 12;
+    $scope.articles_page_size = 12;
+    $scope.streams_page_size = 11;
 
     angular.forEach($rootScope.gamesInfo, function(game, i){
         if(game.id === gameId){
@@ -15,7 +15,7 @@ function($scope, $rootScope, $resource, $cookies, $routeParams, $filter) {
         }
     });
 
-    var request = $resource('http://openesport.jit.su/game/' + $scope.game.id);
+    var request = $resource('http://openesport.nodejitsu.com/game/' + $scope.game.id);
     
     var today = new Date();
     today = today.getDate() + "-" + (today.getMonth() + 1);
@@ -81,7 +81,7 @@ function($scope, $rootScope, $resource, $cookies, $routeParams, $filter) {
 
         angular.forEach($rootScope.articles, function(article, i){
             angular.forEach($rootScope.websites, function(value, key){
-                if(article.website === key && (typeof $cookies[key] === 'undefined' || $cookies[key] == "true")){
+                if(article.website === key && $rootScope.websites[key].enabled === true){
                     $scope.gameArticles.push(article);
                 }
             });

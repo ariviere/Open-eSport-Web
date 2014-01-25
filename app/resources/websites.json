@@ -89,5 +89,15 @@
         "id": "esreality",
         "lang": "en",
         "enabled": true
+    },
+    "LiquidHearth":{
+        "id": "liquidhearth",
+        "lang": "en",
+        "enabled": true
+    },
+    "Cloth5":{
+        "id": "cloth5",
+        "lang": "en",
+        "enabled": true
     }
 }

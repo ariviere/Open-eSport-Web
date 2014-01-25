@@ -8,21 +8,32 @@
 		<!-- <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"> -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
+		<link href="css/custom_style.css" rel="stylesheet">
+
 		<link href='http://fonts.googleapis.com/css?family=Oxygen:700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+	  	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+
 		<link rel="icon" type="images/png" href="images/favicon.ico" />
+
+		
+		<link rel="stylesheet" type="text/css" href="js/bootstrap.switch/bootstrap-switch.css" />
+		
+		<link rel="stylesheet" href="fonts/font-awesome-4/css/font-awesome.min.css">
 
 		<script src="lib/jquery/jquery-1.10.2.min.js"></script>
 		<script src="lib/bootstrap/bootstrap.min.js"></script>
 		<script src="lib/angular/angular.min.js"></script>
 		<script src="lib/angular/angular-route.min.js"></script>
-		<script src="lib/angular/angular-cookies.min.js"></script>
 		<script src="lib/angular/angular-resource.min.js"></script>
+		<script src="lib/angular/angular-translate.min.js"></script>
 
-		<script src="js/stickyFiltersBar.js"></script>
-		<script src="js/analytics.js"></script>
 
 		<script src="app/app.js"></script>
+		<script src="app/international.js"></script>
 		<script src="app/routes.js"></script>
+		<script src="app/services/cookiesModule.js"></script>
 		<script src="app/controllers/home_controller.js"></script>
 		<script src="app/controllers/game_controller.js"></script>
 		<script src="app/controllers/header.js"></script>
@@ -38,7 +49,18 @@
 		<div id="header" ng-controller="navCtrl" ng-include src="'app/views/header.html'"></div>
 
 		<div ng-view></div>
+		
+		<script src="js/sticky.js"></script>
+		<script src="js/analytics.js"></script>
+		<script type="text/javascript" src="js/bootstrap.switch/bootstrap-switch.min.js"></script>
 
-		<div id="footer" ng-include src="'app/views/footer.html'"></div>
+  		<script type="text/javascript">
+        	$(document).ready(function(){
+          		App.init();
+        	});
+      	</script>
+
+		<script type="text/javascript" src="js/behaviour/general.js"></script>
+
 	</body>
 </html>

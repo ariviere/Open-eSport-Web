@@ -1,5 +1,6 @@
-<div class="container">
-  <div class="row">
+<div class="container-fluid" id="pcont">
+  <div class="cl-mcont">
+    <div class="row">
     <!-- <div class="col-md-7">
       <div class="game-column">
         <div class="game-title-container">
@@ -20,11 +21,12 @@
 
     <div ng-class="(!hideStreams) ? 'col-md-7' : 'col-md-8 col-md-offset-2'">
     <!-- <div class="col-md-7"> -->
-      <div class="game-column game-portail-bloc">
-        <div class="game-title-container">
+      <div class="block-flat game-portail-bloc">
+        <div class="header game-title-container">
           <img ng-src="images/{{game.id}}.png" class="imgh2" />
           <span class="game-title" ng-bind="game.name"></span>
         </div>
+        <p class="no-article" ng-if="gameArticles.length == 0">{{ 'NO_ARTICLE' | translate }}</p>
         <ul class="articles-list">
           <li class="game-articles-list" ng-repeat="article in gameArticles | orderBy:orderArticles | startFrom:game.page*articles_page_size | limitTo:articles_page_size">
             <a target="_blank" href="{{article.link}}">
@@ -33,7 +35,7 @@
                   <div class="one-line-title">
                     <div ng-bind="article.title" style="position:relative; padding-left:33px"></div>
                   </div>
-                  <div style="position:relative; padding-left:33px" class="article-date"><span ng-bind="article.date"></span> par <span ng-bind="article.author" class="article-date"></span></div>
+                  <div style="position:relative; padding-left:33px" class="article-date"><span ng-bind="article.date"></span> {{ 'BY' | translate }} <span ng-bind="article.author" class="article-date"></span></div>
               </div>
             </a>
           </li>
@@ -46,8 +48,8 @@
     </div>
 
     <div ng-if="!hideStreams" class="col-md-5">
-      <div class="game-column game-portail-bloc">
-        <div class="game-title-container">
+      <div class="block-flat game-portail-bloc">
+        <div class="header game-title-container">
           <img ng-src="images/tv.png" class="imgh2" />
           <span class="game-title">STREAMS</span>
         </div>
@@ -59,7 +61,7 @@
               <div class="one-line-title">
                 <div ng-bind="stream.status" style="position:relative; padding-left:33px"></div>
               </div>
-              <div style="position:relative; padding-left:33px" class="article-date"><span ng-bind="stream.viewers"></span> spectateurs avec <span ng-bind="stream.name"></span></div>
+              <div style="position:relative; padding-left:33px" class="article-date"><span ng-bind="stream.viewers"></span> {{ 'VIEWERS' | translate }} {{ 'WITH' | translate }} <span ng-bind="stream.name"></span></div>
             </a>
           </li>
         </ul>
@@ -72,3 +74,5 @@
     </div>
   </div>
 </div>
+</div>
+

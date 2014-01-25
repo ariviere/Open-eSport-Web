@@ -1,29 +1,33 @@
-<div class="container">
-    <div ng-repeat="game in gamesInfo | orderBy:orderGames">
-      
-      <div class="col-md-6">
-        <div class="game-column game-home-bloc">
-          <div class="game-title-container">
+<div class="container-fluid" id="pcont">
+  <div class="cl-mcont">
+    <div class="row">
+      <div ng-repeat="game in gamesInfo | orderBy:orderGames" ng-if="posts[game.id].length > 0" class="col-sm-6 col-md-6">
+        <div class="block-flat game-home-bloc">
+          <div class="header game-title-container">
             <a href="#/game/{{game.id}}">
               <img ng-src="images/{{game.id}}.png" class="imgh2" />
               <span ng-bind="game.name" class="game-title"></span>
             </a>
-          <span ng-if="$index != gamesInfo.length-1" class="pull-right arrow"><img ng-click="move_bloc(game.position, 'right')" src="images/arrow-right.png" /></span>
-          <span ng-if="$index != 0" class="pull-right arrow"><img ng-click="move_bloc(game.position, 'left')" src="images/arrow-left.png" /></span>
+            <span ng-if="moveBlocs === true">
+              <span ng-if="$index != gamesInfo.length-1" class="pull-right arrow"><img ng-click="move_bloc(game.position, 'right')" src="images/arrow-right.png" /></span>
+              <span ng-if="$index != 0" class="pull-right arrow"><img ng-click="move_bloc(game.position, 'left')" src="images/arrow-left.png" /></span>
+            </span>
           </div>
-          <ul class="articles-list">
-            <li class="home-articles-list" ng-repeat="article in posts[game.id] | orderBy:orderArticles | startFrom:game.page*page_size | limitTo:page_size">
-              <div class="one-line-title">
-                <a target="_blank" href="{{article.link}}"><img ng-src="images/{{websites[article.website].id}}_16.png" height="16" width="16" /> <span ng-bind="article.date" class="article-date"></span> <span ng-bind="article.title"></span></a>
-              </div>
-            </li>
-          </ul>
-          <div class="pagination-container">
-            <button ng-disabled="game.page == 0" ng-click="previousPage(game.position)"><</button>
-            <button ng-disabled="game.page >= posts[game.id].length/page_size - 1" ng-click="nextPage(game.position)">></button>
+          <div class="content" id="map_one">
+            <ul class="articles-list">
+              <li class="home-articles-list" ng-repeat="article in posts[game.id] | orderBy:orderArticles | startFrom:game.page*page_size | limitTo:page_size">
+                <div class="one-line-title">
+                  <a target="_blank" title="{{article.title}}" href="{{article.link}}"><img ng-src="images/{{websites[article.website].id}}_16.png" height="16" width="16" /> <span ng-bind="article.date" class="article-date"></span> <span ng-bind="article.title"></span></a>
+                </div>
+              </li>
+            </ul>
+            <div class="pagination-container">
+              <button ng-disabled="game.page == 0" ng-click="previousPage(game.position)"><</button>
+              <button ng-disabled="game.page >= posts[game.id].length/page_size - 1" ng-click="nextPage(game.position)">></button>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
+  </div>
 </div>

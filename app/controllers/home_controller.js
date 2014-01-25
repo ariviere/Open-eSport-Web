@@ -4,23 +4,17 @@
 
 var homeController = angular.module('homeController', []);
 
-homeController.controller('HomeCtrl', ['$scope', '$rootScope', '$resource', '$cookies', '$filter', 
-function($scope, $rootScope, $resource, $cookies, $filter) {
+homeController.controller('HomeCtrl', ['$scope', '$rootScope', '$resource', 'Cookies', '$filter', 
+function($scope, $rootScope, $resource, $Cookies, $filter) {
   
-    
-    // angular.forEach($rootScope.gamesInfo, function(game, i){
-    //     var cookieName = game.id + '_position';
-    //     $cookies[cookieName] = (i+1).toString();
-    // });
-
     angular.forEach($rootScope.gamesInfo, function(game, i){
         var cookieName = game.id + '_position';
-        if(typeof $cookies[cookieName] != 'undefined'){
-            game.position = $cookies[cookieName];
+        if($Cookies.hasItem(cookieName)){
+            game.position = $Cookies.getItem(cookieName);
         }
     });
 
-    var requestArticles = $resource('http://openesport.jit.su/posts/web');
+    var requestArticles = $resource('http://openesport.nodejitsu.com/posts/web');
 
     var today = new Date();
     today = today.getDate() + "-" + (today.getMonth() + 1);
@@ -51,7 +45,7 @@ function($scope, $rootScope, $resource, $cookies, $filter) {
 
         angular.forEach($rootScope.articles, function(article, i){
             angular.forEach($rootScope.websites, function(value, key){
-                if(article.website === key && (typeof $cookies[key] === 'undefined' || $cookies[key] == "true")){
+                if(article.website === key && $rootScope.websites[key].enabled === true){
                     var found = false;
                     angular.forEach($rootScope.gamesInfo, function(game, j){
                         if(article.category === game.id){
@@ -89,8 +83,8 @@ function($scope, $rootScope, $resource, $cookies, $filter) {
         var indiceLeft = $rootScope.gamesInfo[leftGameIndice].id + '_position';
         var indiceRight = $rootScope.gamesInfo[rightGameIndice].id + '_position';
 
-        $cookies[indiceLeft] = right.toString();
-        $cookies[indiceRight] = left.toString();
+        $Cookies.setItem(indiceLeft, right.toString(), Infinity);
+        $Cookies.setItem(indiceRight, left.toString(), Infinity);
     }
 
     $scope.previousPage = function(indice){

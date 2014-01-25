@@ -1,50 +1,69 @@
-<div id="navbar">
-
-  <div class="navbar navbar-inverse navbar-static-top navbar-high" role="navigation">
-    <div class="container">
+<div id="head-nav" class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="fa fa-gear"></span>
         </button>
-        <a style="display:inline" class="navbar-brand" href="#"><img src="images/logo.png" alt="Open eSport"></a>
+        <a class="navbar-brand" href="#"><span>Open eSport</span></a>
       </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown">PORTAILS <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li style="padding: 4px 0; margin:0" ng-repeat="game in gamesInfo">
+          <li><a target="_blank" href="https://play.google.com/store/apps/details?id=com.ar.oe"><i class="fa fa-android" style="padding-right:5px"></i> APP ANDROID</a></li>
+          <li><a target="_blank" href="https://twitter.com/openesport"><i class="fa fa-twitter" style="padding-right:5px"></i> @OPENESPORT</a></li>
+          <li><a class="flag" ng-click="changeLanguage('en')"><img src="images/en.png" /></a></li>
+          <li><a class="flag" ng-click="changeLanguage('fr')"><img src="images/fr.png" /></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+<li class="scroller_anchor"></li>
+  <div id="cl-wrapper">
+
+    <div class="cl-sidebar">
+      <div class="cl-toggle"><i class="fa fa-bars"></i></div>
+      <div class="cl-navblock">
+        <ul class="cl-vnavigation">
+          <li><a href="#"><i class="fa fa-home"></i>{{ 'HOME' | translate }}</a></li>
+          <li><a href="#"><i class="fa fa-play"></i>{{ 'PORTALS' | translate }}</a>
+            <ul class="sub-menu">
+              <li ng-repeat="game in gamesInfo">
                 <a href="#/game/{{game.id}}"><img ng-src="images/{{game.id}}.png" width="24" height="24" /> <span ng-bind="game.name" style="padding-left:6px"></span></a>
               </li>
             </ul>
           </li>
-          
-          <li><a target="_blank" href="https://play.google.com/store/apps/details?id=com.ar.oe">APP ANDROID</a></li>
-          <li><a href="#/about">À PROPOS</a></li>
-          <li><a target="_blank" href="https://twitter.com/openesport">@OPENESPORT</a></li>
+          <li><a href="#"><i class="fa fa-coffee"></i>{{ 'SELECT_EN' | translate }}</a>
+            <ul class="sub-menu">
+              <li ng-repeat="websiteName in websitesArrayEN">
+              <a style="cursor:pointer" ng-click="showWebsite(websiteName)"><img ng-class="{active:websites[websiteName].enabled}" ng-src="images/{{websites[websiteName].id}}_24.png" alt="{{websiteName}}" title="{{websiteName}}" > <span ng-bind="websiteName" style="padding-left:6px"></span>
+                <span ng-if="!websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-square"></span>
+                <span ng-if="websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-check-square"></span>
+              </a>
+
+            </li>
+            </ul>
+          </li>
+          <li><a href="#"><i class="fa fa-glass"></i>{{ 'SELECT_FR' | translate }}</a>
+            <ul class="sub-menu">
+              <li ng-repeat="websiteName in websitesArrayFR">
+              <a ng-click="showWebsite(websiteName)" style="cursor:pointer"><img ng-class="{active:websites[websiteName].enabled}" ng-src="images/{{websites[websiteName].id}}_24.png" alt="{{websiteName}}" title="{{websiteName}}"> <span ng-bind="websiteName" style="padding-left:6px"></span>
+                <span ng-if="!websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-square"></span>
+                <span ng-if="websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-check-square"></span>
+              </a>
+
+            </li>
+            </ul>
+          </li>
+          <li><a style="cursor:pointer" ng-click="canMoveBlocs()"><i class="fa fa-arrows"></i>{{ 'MOVE_BLOCS' | translate }}</a></li>
+          <li><a href="#/about"><i class="fa fa-info-circle nav-icon"></i>{{ 'ABOUT' | translate }}</a></li>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div>
-
-  </div>  
-</div>
-
-<div class="scroller_anchor"></div>
-<div class="scroller">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="filter-column">
-            <div ng-repeat="websiteName in websitesArray" style="display:inline">
-              <img class="inner" ng-class="{active:websites[websiteName].enabled}" ng-src="images/{{websites[websiteName].id}}_28.png" alt="{{websites[websiteName].name}}" title="{{websites[websiteName].name}}" ng-click="showWebsite(websiteName)"></a>
-            </div>
-        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <script type="text/javascript">
+        $(document).ready(function(){
+          App.init();
+        });
+      </script>

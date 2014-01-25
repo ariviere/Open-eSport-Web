@@ -1,55 +1,55 @@
 [
     {
-        "name":"LEAGUE OF LEGENDS",
+        "name":"League Of Legends",
         "id":"lol",
         "twitch_name":"League+of+Legends",
         "page":"0",
         "position":"1"
     }, 
     {
-        "name":"STARCRAFT 2",
+        "name":"Starcraft 2",
         "id":"sc2",
         "twitch_name":"StarCraft+II:+Heart+of+the+Swarm",
         "page":"0",
         "position":"2"
     }, 
     {
-        "name":"DOTA 2",
+        "name":"DotA 2",
         "id":"dota2",
         "twitch_name":"Dota+2",
         "page":"0",
         "position":"3"
     }, 
     {
-        "name":"COUNTER STRIKE: GO",
+        "name":"Counter Strike: GO",
         "id":"csgo",
         "twitch_name":"Counter-Strike:+Global+Offensive",
         "page":"0",
         "position":"4"
     }, 
     {
-        "name":"VERSUS FIGHTING",
+        "name":"Versus Fighting",
         "id":"versus",
         "twitch_name":"Super+Street+Fighter+IV",
         "page":"0",
         "position":"5"
     }, 
     {
-        "name":"QUAKELIVE",
+        "name":"QuakeLive",
         "id":"ql",
         "twitch_name":"Quake+Live",
         "page":"0",
         "position":"6"
     }, 
     {
-        "name":"HEARTHSTONE",
+        "name":"Hearthstone",
         "id":"hearthstone",
         "twitch_name":"Hearthstone:+Heroes+of+Warcraft",
         "page":"0",
         "position":"7"
     }, 
     {
-        "name":"AUTRES",
+        "name":"Autres",
         "id":"others",
         "twitch_name":"autres",
         "page":"0",
