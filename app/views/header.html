@@ -19,48 +19,58 @@
 
 
 <li class="scroller_anchor"></li>
-  <div id="cl-wrapper">
+<div id="cl-wrapper">
 
-    <div class="cl-sidebar">
-      <div class="cl-toggle"><i class="fa fa-bars"></i></div>
-      <div class="cl-navblock">
-        <ul class="cl-vnavigation">
-          <li><a href="#"><i class="fa fa-home"></i>{{ 'HOME' | translate }}</a></li>
-          <li><a href="#"><i class="fa fa-play"></i>{{ 'PORTALS' | translate }}</a>
-            <ul class="sub-menu">
-              <li ng-repeat="game in gamesInfo">
-                <a href="#/game/{{game.id}}"><img ng-src="images/{{game.id}}.png" width="24" height="24" /> <span ng-bind="game.name" style="padding-left:6px"></span></a>
-              </li>
-            </ul>
-          </li>
-          <li><a href="#"><i class="fa fa-coffee"></i>{{ 'SELECT_EN' | translate }}</a>
-            <ul class="sub-menu">
-              <li ng-repeat="websiteName in websitesArrayEN">
-              <a style="cursor:pointer" ng-click="showWebsite(websiteName)"><img ng-class="{active:websites[websiteName].enabled}" ng-src="images/{{websites[websiteName].id}}_24.png" alt="{{websiteName}}" title="{{websiteName}}" > <span ng-bind="websiteName" style="padding-left:6px"></span>
-                <span ng-if="!websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-square"></span>
-                <span ng-if="websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-check-square"></span>
-              </a>
-
+  <div class="cl-sidebar">
+    <div class="cl-toggle"><i class="fa fa-bars"></i></div>
+    <div class="cl-navblock">
+      <ul class="cl-vnavigation">
+        <li><a href="#"><i class="fa fa-home"></i>{{ 'HOME' | translate }}</a></li>
+        <li><a href="#"><i class="fa fa-play"></i>{{ 'PORTALS' | translate }}</a>
+          <ul class="sub-menu">
+            <li ng-repeat="game in gamesInfo">
+              <a href="#/game/{{game.id}}"><img ng-src="images/{{game.id}}.png" width="24" height="24" /> <span ng-bind="game.name" style="padding-left:6px"></span></a>
             </li>
-            </ul>
-          </li>
-          <li><a href="#"><i class="fa fa-glass"></i>{{ 'SELECT_FR' | translate }}</a>
-            <ul class="sub-menu">
-              <li ng-repeat="websiteName in websitesArrayFR">
-              <a ng-click="showWebsite(websiteName)" style="cursor:pointer"><img ng-class="{active:websites[websiteName].enabled}" ng-src="images/{{websites[websiteName].id}}_24.png" alt="{{websiteName}}" title="{{websiteName}}"> <span ng-bind="websiteName" style="padding-left:6px"></span>
-                <span ng-if="!websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-square"></span>
-                <span ng-if="websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-check-square"></span>
-              </a>
+          </ul>
+        </li>
+        <li><a href="#"><i class="fa fa-coffee"></i>{{ 'SELECT_EN' | translate }}</a>
+          <ul class="sub-menu">
+            <li ng-repeat="websiteName in websitesArrayEN">
+            <a style="cursor:pointer" ng-click="showWebsite(websiteName)"><img ng-class="{active:websites[websiteName].enabled}" ng-src="images/{{websites[websiteName].id}}_24.png" alt="{{websiteName}}" title="{{websiteName}}" > <span ng-bind="websiteName" style="padding-left:6px"></span>
+              <span ng-if="!websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-square"></span>
+              <span ng-if="websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-check-square"></span>
+            </a>
 
-            </li>
-            </ul>
           </li>
-          <li><a style="cursor:pointer" ng-click="canMoveBlocs()"><i class="fa fa-arrows"></i>{{ 'MOVE_BLOCS' | translate }}</a></li>
-          <li><a href="#/about"><i class="fa fa-info-circle nav-icon"></i>{{ 'ABOUT' | translate }}</a></li>
-        </ul>
-      </div>
+          </ul>
+        </li>
+        <li><a href="#"><i class="fa fa-glass"></i>{{ 'SELECT_FR' | translate }}</a>
+          <ul class="sub-menu">
+            <li ng-repeat="websiteName in websitesArrayFR">
+            <a ng-click="showWebsite(websiteName)" style="cursor:pointer"><img ng-class="{active:websites[websiteName].enabled}" ng-src="images/{{websites[websiteName].id}}_24.png" alt="{{websiteName}}" title="{{websiteName}}"> <span ng-bind="websiteName" style="padding-left:6px"></span>
+              <span ng-if="!websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-square"></span>
+              <span ng-if="websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-check-square"></span>
+            </a>
+
+          </li>
+          </ul>
+        </li>
+        <li><a style="cursor:pointer" ng-click="canMoveBlocs()"><i class="fa fa-arrows"></i>{{ 'MOVE_BLOCS' | translate }}</a></li>
+        <li><a href="#/about"><i class="fa fa-info-circle nav-icon"></i>{{ 'ABOUT' | translate }}</a></li>
+      </ul>
     </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Open eSport -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:200px;height:200px"
+         data-ad-client="ca-pub-4132391279379480"
+         data-ad-slot="7180558524"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
   </div>
+</div>
 
   <script type="text/javascript">
         $(document).ready(function(){
