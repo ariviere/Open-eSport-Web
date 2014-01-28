@@ -13,12 +13,17 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$re
 	var language = "en";
 	if($Cookies.hasItem('language')){
 		language = $Cookies.getItem('language');
+		console.log(language + "wfw");
 		$translate.uses(language);
 	}
 	else{
 		language = window.navigator.userLanguage || window.navigator.language;
 		if(language === "fr")
 			$translate.uses("fr");
+		else{
+			language = "en";
+			$translate.uses("en");
+		}
 	}
 
 	$rootScope.moveBlocs = false;
@@ -59,6 +64,7 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$re
 		angular.forEach($rootScope.websites, function(value, key){
 			if($Cookies.getItem(key) === 'false' || ($rootScope.websites[key].lang !== language && !$Cookies.hasItem(key))){
 				$rootScope.websites[key].enabled = false;
+				console.log("disabled website: " + key);
 			}else
 				$rootScope.websites[key].enabled = true;
 		});

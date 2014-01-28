@@ -4,6 +4,13 @@ body{
 	background: #dddddc url("../images/pattern-bg.png") repeat scroll 50% 50%;*/
 }
 
+ul
+{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
 .container{
 	padding: auto 0;
 }
