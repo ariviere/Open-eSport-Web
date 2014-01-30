@@ -6,36 +6,10 @@ var homeController = angular.module('homeController', []);
 
 homeController.controller('HomeCtrl', ['$scope', '$rootScope', '$resource', 'Cookies', '$filter', 
 function($scope, $rootScope, $resource, $Cookies, $filter) {
-  
-    angular.forEach($rootScope.gamesInfo, function(game, i){
-        var cookieName = game.id + '_position';
-        if($Cookies.hasItem(cookieName)){
-            game.position = $Cookies.getItem(cookieName);
-        }
-    });
+    getGamesPosition();
 
-    var requestArticles = $resource('http://openesport.nodejitsu.com/posts/web');
+    getArticles();
 
-    var today = new Date();
-    today = today.getDate() + "-" + (today.getMonth() + 1);
-    requestArticles.query(function(articles){
-        $rootScope.articles = articles;
-
-        angular.forEach(articles, function(article, i){
-            //date
-            var articleDayMonth = new Date(article.pubDate).getDate() + "-" + (new Date(article.pubDate).getMonth() +1);
-            if(today === articleDayMonth)
-                article.date = $filter('date')(article.pubDate, 'HH:mm');
-            else
-                article.date = $filter('date')(article.pubDate, 'dd/MM');
-
-            if(article.website === "Reddit")
-                article.link = article.link.substr(0, article.link.length-8);
-        });
-        $rootScope.filterArticles();
-
-    });
-    
     $rootScope.filterArticles = function(){
         $scope.posts = {};
 
@@ -59,9 +33,6 @@ function($scope, $rootScope, $resource, $Cookies, $filter) {
                 }
             });
         });
-
-        $scope.page_size = 12;
-
     }
 
     $scope.move_bloc = function(left, direction){
@@ -97,6 +68,38 @@ function($scope, $rootScope, $resource, $Cookies, $filter) {
 
     $scope.orderArticles = '-pubDate';
     $scope.orderGames = 'position';
+    $scope.page_size = 12;
+
+    function getArticles(requestArticles){
+        var requestArticles = $resource('http://openesport.nodejitsu.com/posts/web');
+        var today = new Date();
+        today = today.getDate() + "-" + (today.getMonth() + 1);
+        requestArticles.query(function(articles){
+            $rootScope.articles = articles;
+
+            angular.forEach(articles, function(article, i){
+                //date
+                var articleDayMonth = new Date(article.pubDate).getDate() + "-" + (new Date(article.pubDate).getMonth() +1);
+                if(today === articleDayMonth)
+                    article.date = $filter('date')(article.pubDate, 'HH:mm');
+                else
+                    article.date = $filter('date')(article.pubDate, 'dd/MM');
+
+                if(article.website === "Reddit")
+                    article.link = article.link.substr(0, article.link.length-8);
+            });
+            $rootScope.filterArticles();
+        });
+    }
+
+    function getGamesPosition(){
+        angular.forEach($rootScope.gamesInfo, function(game, i){
+            var cookieName = game.id + '_position';
+            if($Cookies.hasItem(cookieName)){
+                game.position = $Cookies.getItem(cookieName);
+            }
+        });
+    }
 
     function gameIndice(indice){
         var result;

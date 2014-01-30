@@ -2,7 +2,7 @@ var headerControllers = angular.module('headerControllers', []);
 
 headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$resource', '$http', '$translate', function($scope, $rootScope, $Cookies, $resource, $http, $translate) {
 	var request = $resource('resources/websites.json', {});
-	
+
 	$scope.changeLanguage = function (langKey) {
 	    $translate.uses(langKey);
 	    $Cookies.setItem('language', langKey, Infinity) ;
@@ -13,7 +13,6 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$re
 	var language = "en";
 	if($Cookies.hasItem('language')){
 		language = $Cookies.getItem('language');
-		console.log(language + "wfw");
 		$translate.uses(language);
 	}
 	else{
@@ -64,7 +63,6 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$re
 		angular.forEach($rootScope.websites, function(value, key){
 			if($Cookies.getItem(key) === 'false' || ($rootScope.websites[key].lang !== language && !$Cookies.hasItem(key))){
 				$rootScope.websites[key].enabled = false;
-				console.log("disabled website: " + key);
 			}else
 				$rootScope.websites[key].enabled = true;
 		});
