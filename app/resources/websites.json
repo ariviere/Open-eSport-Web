@@ -43,7 +43,7 @@
     "Reddit":{
         "id": "reddit",
         "lang": "en",
-        "enabled": true 
+        "enabled": false 
     }, 
     "onGamers":{
         "id": "ongamers",
