@@ -53,7 +53,7 @@ function($scope, $rootScope, $resource, $routeParams, $filter) {
 
 
     function getArticles(requestArticles){
-        var requestArticles = $resource('http://localhost:5000/posts/web');
+        var requestArticles = $resource('http://openesport.nodejitsu.com/posts/web');
         var today = new Date();
         today = today.getDate() + "-" + (today.getMonth() + 1);
         requestArticles.query(function(articles){
