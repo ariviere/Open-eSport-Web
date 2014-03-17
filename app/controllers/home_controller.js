@@ -6,69 +6,56 @@ var homeController = angular.module('homeController', []);
 
 homeController.controller('HomeCtrl', ['$scope', '$rootScope', '$resource', 'Cookies', '$filter', 
 function($scope, $rootScope, $resource, $Cookies, $filter) {
-    getGamesPosition();
+    var allStreams = [];
+    $scope.articlesLoaded = false;
+    $scope.streamsLoaded = false;
 
     getArticles();
+    getStreams();
 
     $rootScope.filterArticles = function(){
-        $scope.posts = {};
-
-        angular.forEach($rootScope.gamesInfo, function(game, i){
-            $scope.posts[game.id] = [];
-        });
+        $scope.posts = [];
 
         angular.forEach($rootScope.articles, function(article, i){
-            angular.forEach($rootScope.websites, function(value, key){
-                if(article.website === key && $rootScope.websites[key].enabled === true){
-                    var found = false;
-                    angular.forEach($rootScope.gamesInfo, function(game, j){
-                        if(article.category === game.id){
-                            found = true;
-                            $scope.posts[game.id].push(article);
-                        }
-                    });
 
-                    if(!found)
-                        $scope.posts.others.push(article)
-                }
+            var found = false;
+            angular.forEach($rootScope.gamesInfo, function(game, i){
+                if(article.category === game.id)
+                    found = true;
             });
+            
+            if(!found){
+              article.category = "others";
+            }
+
+            if($rootScope.websites[article.website].enabled === true && $rootScope.gamesInfo[article.category].enabled === true && $rootScope.languages[article.language].enabled === true)
+                $scope.posts.push(article);
         });
+        $scope.articlesLoaded = true;
+        filterStreams();
     }
 
-    $scope.move_bloc = function(left, direction){
-        var right;
 
-        if(direction === "left"){
-            right = (parseInt(left)-1).toString();
-        }else if(direction === "right"){
-            right = (parseInt(left)+1).toString();
+    $scope.nextPage = function(type){
+        if(type === "news"){
+            $scope.news_page_size += 30;
+            console.log("news");
         }
-
-        var leftGameIndice = gameIndice(left)
-        var rightGameIndice = gameIndice(right);
-
-        var temp = $rootScope.gamesInfo[leftGameIndice].position;
-        $rootScope.gamesInfo[leftGameIndice].position = $rootScope.gamesInfo[rightGameIndice].position;
-        $rootScope.gamesInfo[rightGameIndice].position = temp;
-
-        var indiceLeft = $rootScope.gamesInfo[leftGameIndice].id + '_position';
-        var indiceRight = $rootScope.gamesInfo[rightGameIndice].id + '_position';
-
-        $Cookies.setItem(indiceLeft, right.toString(), Infinity);
-        $Cookies.setItem(indiceRight, left.toString(), Infinity);
+        else if(type === "streams"){
+            $scope.streams_page_size += 30;
+            console.log("news");
+        }
     }
 
-    $scope.previousPage = function(indice){
-        $rootScope.gamesInfo[gameIndice(indice)].page--;
-    }
-
-    $scope.nextPage = function(indice){
-        $rootScope.gamesInfo[gameIndice(indice.toString())].page++;
-    }
 
     $scope.orderArticles = '-pubDate';
-    $scope.orderGames = 'position';
-    $scope.page_size = 12;
+    $scope.news_page_size = 15;
+    $scope.page_number = 0;
+    
+    $scope.orderStreams = '-viewers';
+    $scope.articles_page_size = 12;
+    $scope.streams_page_size = 11;
+    $scope.streamPage = 0;
 
     function getArticles(requestArticles){
         var requestArticles = $resource('http://openesport.nodejitsu.com/posts/web');
@@ -92,22 +79,44 @@ function($scope, $rootScope, $resource, $Cookies, $filter) {
         });
     }
 
-    function getGamesPosition(){
-        angular.forEach($rootScope.gamesInfo, function(game, i){
-            var cookieName = game.id + '_position';
-            if($Cookies.hasItem(cookieName)){
-                game.position = $Cookies.getItem(cookieName);
-            }
+    function getStreams(){
+        angular.forEach($rootScope.gamesInfo, function(value, key){
+            var streamsUrl = "https://api.twitch.tv/kraken/streams?game=" + value.twitch_name + "&callback=?";
+            $.getJSON(streamsUrl, function (data) {
+                angular.forEach(data.streams, function(item, index){
+                    var stream = {};
+                    stream.name = item.channel.display_name;
+                    stream.game = key;
+                    stream.img = item.channel.logo;
+                    stream.status = item.channel.status;
+                    stream.link = item.channel.url;
+                    stream.viewers = item.viewers;
+                    allStreams.push(stream);
+                });
+                filterStreams();
+                $scope.streamsLoaded = true;
+           });
         });
+        
     }
 
-    function gameIndice(indice){
-        var result;
-        angular.forEach($rootScope.gamesInfo, function(game, i){
-            if(game.position === indice){
-                result = i;
+    function filterStreams(){
+        $scope.gameStreams = [];
+
+        allStreams.forEach(function(stream){
+            if($rootScope.gamesInfo[stream.game].enabled === true){
+                if(!$scope.$$phase){
+                    $scope.$apply(
+                        $scope.gameStreams.push(stream)
+                    );
+                }
+                else{
+                    $scope.gameStreams.push(stream);
+                }
+                
             }
         });
-        return result;
+
     }
+
 }]);

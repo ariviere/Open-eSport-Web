@@ -22,7 +22,11 @@ function($scope, $rootScope, $resource, $routeParams, $filter) {
             if(article.category === gameId){
                 angular.forEach($rootScope.websites, function(value, key){
                     if(article.website === key && $rootScope.websites[key].enabled === true){
-                        $scope.gameArticles.push(article);
+                        angular.forEach($rootScope.languages, function(value, key){
+                            if(article.language === key && $rootScope.language[key].enabled === true){
+                                $scope.gameArticles.push(article);
+                            }
+                        })
                     }
                 });
             }
@@ -30,14 +34,14 @@ function($scope, $rootScope, $resource, $routeParams, $filter) {
     }
 
     $scope.previousPage = function(type){
-        if(type === "articles")
+        if(type === "news")
             $scope.game.page--;
         else if(type === "streams")
             $scope.streamPage--;
     }
 
     $scope.nextPage = function(type){
-        if(type === "articles")
+        if(type === "news")
             $scope.game.page++;
         else if(type === "streams")
             $scope.streamPage++;

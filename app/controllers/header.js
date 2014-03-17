@@ -3,45 +3,28 @@ var headerControllers = angular.module('headerControllers', []);
 headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$resource', '$http', '$translate', function($scope, $rootScope, $Cookies, $resource, $http, $translate) {
 	var request = $resource('resources/websites.json', {});
 
-	$scope.changeLanguage = function (langKey) {
-	    $translate.uses(langKey);
-	    $Cookies.setItem('language', langKey, Infinity) ;
-	    setDisabledWebsites(langKey);
-	    $rootScope.filterArticles();
-	};
-
-	var language = "en";
-	if($Cookies.hasItem('language')){
-		language = $Cookies.getItem('language');
-		$translate.uses(language);
-	}
+	language = window.navigator.userLanguage || window.navigator.language;
+	if(language === "fr")
+		$translate.uses("fr");
 	else{
-		language = window.navigator.userLanguage || window.navigator.language;
-		if(language === "fr")
-			$translate.uses("fr");
-		else{
-			language = "en";
-			$translate.uses("en");
-		}
+		language = "en";
+		$translate.uses("en");
 	}
-
-	$rootScope.moveBlocs = false;
 
 	$http.get('app/resources/websites.json').success(function(data) {
 		$rootScope.websites = data;
-		$scope.websitesArrayFR = [];
-		$scope.websitesArrayEN = [];
-		angular.forEach($rootScope.websites, function(value, key){
-			if($rootScope.websites[key].lang === "fr")
-				$scope.websitesArrayFR.push(key);
-			else if($rootScope.websites[key].lang === "en")
-				$scope.websitesArrayEN.push(key);
-		});
 		setDisabledWebsites(language);
 	});
 
 	$http.get('app/resources/games.json').success(function(data) {
 		$rootScope.gamesInfo = data;
+		initGameFilters()
+	});
+
+	$http.get('app/resources/languages.json').success(function(data) {
+		$rootScope.languages = data;
+		$rootScope.languages[language].enabled = true;
+		initLanguageFilters();
 	});
 
 	$scope.showWebsite = function(website_selected){
@@ -55,17 +38,64 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$re
 		$rootScope.filterArticles();
 	}
 
-	$scope.canMoveBlocs = function(){
-		$rootScope.moveBlocs = !$rootScope.moveBlocs;
+	$scope.showGame = function(game_selected){
+		angular.forEach($rootScope.gamesInfo, function(value, key){
+			if(game_selected === key){
+				$rootScope.gamesInfo[key].enabled = !$rootScope.gamesInfo[key].enabled;
+				$Cookies.setItem(key, $rootScope.gamesInfo[key].enabled.toString(), Infinity);
+			}
+		});
+
+		$rootScope.filterArticles();
+	}
+
+	$scope.showLanguage = function(language_selected){
+		angular.forEach($rootScope.languages, function(value, key){
+			if(language_selected === key){
+				$rootScope.languages[key].enabled = !$rootScope.languages[key].enabled;
+				$Cookies.setItem(key, $rootScope.languages[key].enabled.toString(), Infinity);
+			}
+		});
+
+		$rootScope.filterArticles();
 	}
 
 	function setDisabledWebsites(language){
 		angular.forEach($rootScope.websites, function(value, key){
-			if($Cookies.getItem(key) === 'false' || ($rootScope.websites[key].lang !== language && !$Cookies.hasItem(key))){
+			if($Cookies.getItem(key) === 'false' || value.enabled === false){
 				$rootScope.websites[key].enabled = false;
 			}else
 				$rootScope.websites[key].enabled = true;
 		});
+	}
+
+	function initGameFilters(){
+		$scope.gameIcons = [];
+		angular.forEach($rootScope.gamesInfo, function(value, key){
+			$scope.gameIcons.push(value);
+			if($Cookies.getItem(key) === 'false'){
+				$rootScope.gamesInfo[key].enabled = false;
+			}else
+				$rootScope.gamesInfo[key].enabled = true;
+		});
+	}
+
+	function initLanguageFilters(){
+		angular.forEach($rootScope.languages, function(value, key){
+			if($Cookies.getItem(key) === 'false'){
+				$rootScope.languages[key].enabled = false;
+			}else if($Cookies.getItem(key) === 'true'){
+				$rootScope.languages[key].enabled = true;
+			}
+		});
+	}
+
+	$scope.showMore = function(){
+		if($('#hidden-filter-container').css("display") === "none")
+			$('#hidden-filter-container').css({"display":"block"});
+		else{
+			$('#hidden-filter-container').css({"display":"none"});
+		}
 	}
 
 }]);

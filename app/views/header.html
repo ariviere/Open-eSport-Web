@@ -1,69 +1,61 @@
-<div id="head-nav" class="navbar navbar-default navbar-static-top">
-    <div class="container-fluid">
+<div id="head-nav" class="navbar navbar-default">
+    <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="fa fa-gear"></span>
         </button>
-        <a class="navbar-brand" href="#"><span>Open eSport</span></a>
+        <a class="navbar-brand" href="#"><img src="images/logo2.png" /></a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a target="_blank" href="https://play.google.com/store/apps/details?id=com.ar.oe"><i class="fa fa-android" style="padding-right:5px"></i> APP ANDROID</a></li>
           <li><a target="_blank" href="https://twitter.com/openesport"><i class="fa fa-twitter" style="padding-right:5px"></i> @OPENESPORT</a></li>
-          <li><a class="flag" ng-click="changeLanguage('en')"><img src="images/en.png" /></a></li>
-          <li><a class="flag" ng-click="changeLanguage('fr')"><img src="images/fr.png" /></a></li>
+          <li><a href="#/about"><i class="fa fa-rocket" style="padding-right:5px"></i>{{ 'ABOUT' | translate }}</a></li>
         </ul>
       </div>
     </div>
   </div>
 
 
-<li class="scroller_anchor"></li>
-<div id="cl-wrapper">
+<div class="container">
+  <div id="filter-container">
+      <div id="filter-name">{{ 'FILTER' | translate }}</div>
+      <div ng-repeat="game in gameIcons" ng-class="(game.enabled) ? 'filter-on' : 'filter-off'" class="filter" ng-click="showGame(game.id)">
+        <img ng-src="images/{{game.id}}.png" height="20px" width="20px" /><span ng-bind="game.abrev" style="padding-left:6px"></span>
+      </div>
+      <div ng-repeat="lang in languages" ng-class="(lang.enabled) ? 'filter-on' : 'filter-off'" class="filter" ng-click="showLanguage(lang.id)">
+        <img ng-src="images/{{lang.id}}.png" height="20px" width="20px" /><span ng-bind="lang.abrev" style="padding-left:6px"></span>
+      </div>
+      <div class="filter filter-none" ng-click="showMore()">
+        <img ng-src="images/more_filter.png" height="20px" width="20px" />
+      </div>
+  </div>
 
-  <div class="cl-sidebar">
-    <div class="cl-toggle"><i class="fa fa-bars"></i></div>
-    <div class="cl-navblock">
-      <ul class="cl-vnavigation">
-        <li><a href="#"><i class="fa fa-home"></i>{{ 'HOME' | translate }}</a></li>
-        <li><a href="#"><i class="fa fa-play"></i>{{ 'PORTALS' | translate }}</a>
-          <ul class="sub-menu">
-            <li ng-repeat="game in gamesInfo">
-              <a href="#/game/{{game.id}}"><img ng-src="images/{{game.id}}.png" width="24" height="24" /> <span ng-bind="game.name" style="padding-left:6px"></span></a>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#"><i class="fa fa-coffee"></i>{{ 'SELECT_EN' | translate }}</a>
-          <ul class="sub-menu">
-            <li ng-repeat="websiteName in websitesArrayEN">
-            <a style="cursor:pointer" ng-click="showWebsite(websiteName)"><img ng-class="{active:websites[websiteName].enabled}" ng-src="images/{{websites[websiteName].id}}_24.png" alt="{{websiteName}}" title="{{websiteName}}" > <span ng-bind="websiteName" style="padding-left:6px"></span>
-              <span ng-if="!websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-square"></span>
-              <span ng-if="websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-check-square"></span>
-            </a>
-
-          </li>
-          </ul>
-        </li>
-        <li><a href="#"><i class="fa fa-glass"></i>{{ 'SELECT_FR' | translate }}</a>
-          <ul class="sub-menu">
-            <li ng-repeat="websiteName in websitesArrayFR">
-            <a ng-click="showWebsite(websiteName)" style="cursor:pointer"><img ng-class="{active:websites[websiteName].enabled}" ng-src="images/{{websites[websiteName].id}}_24.png" alt="{{websiteName}}" title="{{websiteName}}"> <span ng-bind="websiteName" style="padding-left:6px"></span>
-              <span ng-if="!websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-square"></span>
-              <span ng-if="websites[websiteName].enabled" style="margin-top:6px" class="pull-right fa fa-check-square"></span>
-            </a>
-
-          </li>
-          </ul>
-        </li>
-        <li><a style="cursor:pointer" ng-click="canMoveBlocs()"><i class="fa fa-arrows"></i>{{ 'MOVE_BLOCS' | translate }}</a></li>
-        <li><a href="#/about"><i class="fa fa-info-circle nav-icon"></i>{{ 'ABOUT' | translate }}</a></li>
-      </ul>
+  <div id="hidden-filter-container" class="row">
+    <div class="col-md-4">
+      <div class="list-group">  
+        <a ng-repeat="website in websites" ng-if="$index%3 === 0" ng-click="showWebsite(website.name)" class="list-group-item" style="cursor:pointer;">
+          <img ng-class="(website.enabled) ? 'filter-on-left' : 'filter-off-left'" ng-src="images/{{website.id}}_24.png" /> <span ng-bind="website.name"></span>
+        </a>
+      </div>
     </div>
+
+    <div class="col-md-4">
+      <div class="list-group">  
+        <a ng-repeat="website in websites" ng-if="$index%3 === 1" ng-click="showWebsite(website.name)" class="list-group-item" style="cursor:pointer;">
+          <img ng-class="(website.enabled) ? 'filter-on-left' : 'filter-off-left'" ng-src="images/{{website.id}}_24.png" /> <span ng-bind="website.name"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="list-group">  
+        <a ng-repeat="website in websites" ng-if="$index%3 === 2" ng-click="showWebsite(website.name)" class="list-group-item" style="cursor:pointer;">
+          <img ng-class="(website.enabled) ? 'filter-on-left' : 'filter-off-left'" ng-src="images/{{website.id}}_24.png" /> <span ng-bind="website.name"></span>
+        </a>
+      </div>
+    </div>
+
   </div>
 </div>
 
-  <script type="text/javascript">
-        $(document).ready(function(){
-          App.init();
-        });
-      </script>

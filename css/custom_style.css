@@ -1,7 +1,5 @@
 body{
-	/*padding-top: 65px;*/
-	/*font-family: helvetica;
-	background: #dddddc url("../images/pattern-bg.png") repeat scroll 50% 50%;*/
+	background: #dddddc;
 }
 
 ul
@@ -11,16 +9,23 @@ ul
 	margin: 0px;
 }
 
-.container{
-	padding: auto 0;
+.navbar, .navbar-default {
+	margin-bottom: 0px;
+	border:none;
 }
 
-/*.navbar-inverse .navbar-nav>li>a {
-	font-family: 'Oxygen', sans-serif;
-	color:#A9A9A9;
-	font-size: 12px;
-	letter-spacing: 0.5px;
-}*/
+a{
+	color:#494949;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+.navbar-brand{
+	padding:2px 15px;
+}
+
 
 .dropdown-menu>li>a{
 	font-family: 'Oxygen', sans-serif;
@@ -29,20 +34,17 @@ ul
 
 .game-title{
 	color: #494949;
-	font-size: 18px;
-	padding:0;
+	font-size: 15px;
+	margin: 20px 20px 10px;
+	text-transform: uppercase;
+	font-family: 'Coming Soon', cursive;
+	border-bottom: 1px solid #494949;
+	cursor: default;
+	display: inline-block;
 }
 
 .game-title:hover{
 	text-decoration:none;
-}
-
-.game-title-container{
-	padding: 10px 10px 0;
-}
-
-.game-title-container a{
-	text-decoration: none;
 }
 
 .navbar-high{
@@ -74,12 +76,14 @@ ul
 }
 
 .game-column{
-	border: 1px solid #c5c5c5;
 	background-color: #fff;
+	margin-bottom:20px;
+	padding-bottom:10px;
 }
 
 .game-home-bloc{
-	min-height: 544px;
+	background-color: #fff;
+	padding: 0;
 }
 
 .game-portail-bloc{
@@ -92,10 +96,6 @@ ul
 	background-color: #dddddc;
 }
 
-.about-column{
-	margin-bottom:20px;
-}
-
 .game-column ul{
     list-style-type: none;
 	padding:0;
@@ -103,7 +103,7 @@ ul
 }
 
 .home-articles-list{
-    padding: 8px 10px 8px 20px;
+    padding: 8px 20px 8px 20px;
 }
 
 .game-articles-list{
@@ -152,7 +152,7 @@ ul
 }
 
 .about_text{
-	margin: 5px 10px;
+	margin: 5px 20px;
 }
 
 .imgh2{
@@ -240,3 +240,91 @@ button:hover{
 	margin:20px;
 	font-size:16px;
 }
+
+.filter{
+	background-color: #f8f8f8;
+	color: #555;
+	vertical-align: middle;
+	padding:5px 10px 3px;
+	margin-right:8px;
+	margin-bottom: 5px;
+	font-size: 14px;
+	cursor: pointer;
+	display:inline-block;
+	text-transform: uppercase;
+	border-left: 1px solid #e7e7e7;
+	border-right: 1px solid #e7e7e7;
+}
+
+
+.filter-on{
+	border-bottom: solid 3px #1c6619;
+}
+
+.filter-off{
+	border-bottom: solid 3px #a90527;
+}
+
+.filter-on-left{
+	border-left: solid 6px #1c6619;
+	padding-left: 20px; 
+}
+
+.filter-off-left{
+	border-left: solid 6px #a90527;
+	padding-left: 20px; 
+}
+
+.filter-none{
+	border-bottom: solid 3px #444;
+}
+
+#filter-container{
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+#filter-name{
+	display:inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+	font-size: 18px;
+	font-family: 'Coming Soon', cursive;
+	cursor: default;
+}
+
+#hidden-filter-container{
+	display: none;
+}
+
+.more{
+	text-align: center;
+	border-bottom: solid 3px #e93e0d;
+	font-weight: bold;
+}
+
+.loading{
+	text-align: center;
+	border-bottom: solid 3px #e93e0d;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.loading img
+{
+	-webkit-animation-name:             rotate; 
+	-webkit-animation-duration:         1s; 
+	-webkit-animation-iteration-count:  infinite;
+	-webkit-animation-timing-function: linear;
+}
+
+

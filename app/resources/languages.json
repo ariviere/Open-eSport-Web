@@ -1,0 +1,12 @@
+{
+    "en":{
+        "id":"en",
+        "abrev":"EN",
+        "enabled": false 
+    }, 
+    "fr":{
+        "id":"fr",
+        "abrev":"FR",
+        "enabled": false 
+    }
+}

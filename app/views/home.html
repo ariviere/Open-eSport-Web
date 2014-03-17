@@ -1,33 +1,44 @@
-<div class="container-fluid" id="pcont">
-  <div class="cl-mcont">
-    <div class="row">
-      <div ng-repeat="game in gamesInfo | orderBy:orderGames" ng-if="posts[game.id].length > 0" class="col-sm-6 col-md-6">
+<div class="container">
+  <div class="row">
+      <div class="col-md-7">
         <div class="block-flat game-home-bloc">
-          <div class="header game-title-container">
-            <a href="#/game/{{game.id}}">
-              <img ng-src="images/{{game.id}}.png" class="imgh2" />
-              <span ng-bind="game.name" class="game-title"></span>
-            </a>
-            <span ng-if="moveBlocs === true">
-              <span ng-if="$index != gamesInfo.length-1" class="pull-right arrow"><img ng-click="move_bloc(game.position, 'right')" src="images/arrow-right.png" /></span>
-              <span ng-if="$index != 0" class="pull-right arrow"><img ng-click="move_bloc(game.position, 'left')" src="images/arrow-left.png" /></span>
-            </span>
-          </div>
+          <div class="header game-title-container game-title">{{ 'ARTICLES_TITLE' | translate }}</div>
           <div class="content" id="map_one">
             <ul class="articles-list">
-              <li class="home-articles-list" ng-repeat="article in posts[game.id] | orderBy:orderArticles | startFrom:game.page*page_size | limitTo:page_size">
+              <li class="home-articles-list" ng-repeat="article in posts | orderBy:orderArticles">
                 <div class="one-line-title">
-                  <a target="_blank" title="{{article.title}}" href="{{article.link}}"><img ng-src="images/{{websites[article.website].id}}_16.png" height="16" width="16" /> <span ng-bind="article.date" class="article-date"></span> <span ng-bind="article.title"></span></a>
+                  <a target="_blank" title="{{article.title}}" href="{{article.link}}"><img ng-src="images/{{gamesInfo[article.category].id}}.png" height="24" width="24" /> <img ng-src="images/{{websites[article.website].id}}_16.png" /> <span ng-bind="article.date" class="article-date"></span> <span ng-bind="article.title"></span></a>
                 </div>
               </li>
+              <li class="loading" ng-if="!articlesLoaded" style="cursor:default;">{{ 'LOADING' | translate }} <img ng-src="images/loading.png" />
+              <!-- <li class="more" ng-disabled="posts.length < news_page_size" ng-click="nextPage('news')" style="cursor:pointer;">{{ 'MORE' | translate }} <img ng-src="images/more.png" />
+              </li> -->
             </ul>
-            <div class="pagination-container">
-              <button ng-disabled="game.page == 0" ng-click="previousPage(game.position)"><</button>
-              <button ng-disabled="game.page >= posts[game.id].length/page_size - 1" ng-click="nextPage(game.position)">></button>
-            </div>
           </div>
         </div>
       </div>
+
+    <div class="col-md-5">
+       <div class="block-flat game-home-bloc">
+          <div class="header game-title-container game-title">{{ 'STREAMS' | translate }}</div>
+          <div>
+          <ul class="articles-list">
+            <li class="home-articles-list" ng-repeat="stream in gameStreams | orderBy:orderStreams">
+              <a target="_blank" href="{{stream.link}}">
+                <div class="pull-left" style="position:absolute; padding-top:8px"><img ng-src="images/{{stream.game}}.png" width="24" height="24" /></div> 
+                <div class="one-line-title">
+                  <div ng-bind="stream.status" style="position:relative; padding-left:33px"></div>
+                </div>
+                <div style="position:relative; padding-left:33px" class="article-date"><span style="font-size:12px" ng-bind="stream.viewers"></span> {{ 'VIEWERS' | translate }} {{ 'WITH' | translate }} <span ng-bind="stream.name"></span></div>
+              </a>
+            </li>
+            <li class="loading" ng-if="!streamsLoaded" style="cursor:default;">{{ 'LOADING' | translate }} <img ng-src="images/loading.png" />
+            <!-- <li class="more" ng-disabled="gameStreams.length < streams_page_size" ng-click="nextPage('streams')" style="cursor:pointer;">{{ 'MORE' | translate }} <img ng-src="images/more.png" /> -->
+              </li>
+          </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
 </div>
