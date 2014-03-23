@@ -118,5 +118,11 @@
         "id": "cloth5",
         "lang": "en",
         "enabled": true
+    },
+    "GosuGamers":{
+        "name": "GosuGamers",
+        "id": "gosugamers",
+        "lang": "en",
+        "enabled": true
     }
 }
