@@ -58,7 +58,7 @@ function($scope, $rootScope, $resource, $Cookies, $filter) {
     $scope.streamPage = 0;
 
     function getArticles(requestArticles){
-        var requestArticles = $resource('http://openesport.nodejitsu.com/posts/web');
+        var requestArticles = $resource('http://openesport.herokuapp.com/posts/web');
         var today = new Date();
         today = today.getDate() + "-" + (today.getMonth() + 1);
         requestArticles.query(function(articles){
