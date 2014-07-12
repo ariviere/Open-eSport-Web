@@ -6,6 +6,8 @@ var homeController = angular.module('homeController', []);
 
 homeController.controller('HomeCtrl', ['$scope', '$rootScope', '$resource', 'Cookies', '$filter', 
 function($scope, $rootScope, $resource, $Cookies, $filter) {
+    var SERVER_ADDRESS = 'http://openesport.herokuapp.com/posts/web';
+
     var allStreams = [];
     $scope.articlesLoaded = false;
     $scope.streamsLoaded = false;
@@ -58,7 +60,7 @@ function($scope, $rootScope, $resource, $Cookies, $filter) {
     $scope.streamPage = 0;
 
     function getArticles(requestArticles){
-        var requestArticles = $resource('http://openesport.herokuapp.com/posts/web');
+        var requestArticles = $resource(SERVER_ADDRESS);
         var today = new Date();
         today = today.getDate() + "-" + (today.getMonth() + 1);
         requestArticles.query(function(articles){
