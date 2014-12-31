@@ -6,19 +6,55 @@
           <div class="content" id="map_one">
             <ul class="articles-list">
               <li class="home-articles-list" ng-repeat="article in posts | orderBy:orderArticles">
-                <div class="one-line-title">
-                  <a target="_blank" title="{{article.title}}" href="{{article.link}}"><img ng-src="images/{{gamesInfo[article.category].id}}.png" height="24" width="24" /> <img ng-src="images/{{websites[article.website].id}}_16.png" /> <span ng-bind="article.date" class="article-date"></span> <span ng-bind="article.title"></span></a>
-                </div>
+                <a target="_blank" title="{{article.title}}" ng-href="{{article.link}}"><div class="one-line-title">
+                  <div class="left_logo"><img ng-src="images/{{gamesInfo[article.category].id}}.png" /></div> 
+                  <div class="right_content"><span ng-bind="article.date" class="article-date"></span> <span ng-bind="article.title"></span><br />
+                  <span class="article-date">{{ 'BY' | translate }} <span ng-bind="article.author"></span></span></div>
+                </div></a>
               </li>
               <li class="loading" ng-if="!articlesLoaded" style="cursor:default;">{{ 'LOADING' | translate }} <img ng-src="images/loading.png" />
-              <!-- <li class="more" ng-disabled="posts.length < news_page_size" ng-click="nextPage('news')" style="cursor:pointer;">{{ 'MORE' | translate }} <img ng-src="images/more.png" />
-              </li> -->
+              <li class="more" ng-if="articlesLoaded" ng-click="refreshArticles(true)" style="cursor:pointer;">{{ 'MORE' | translate }} <img ng-src="images/more.png" />
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
-    <div class="col-md-5">
+      <div class="col-md-5">
+        <div class="block-flat game-column">
+          <div class="game-title-container">
+            <span class="game-title">{{ 'INFO_TITLE' | translate }}</span>
+          </div>
+
+          <div class="about_text">
+            <p>{{ 'INFO_DESCRIPTION' | translate }}</p>
+          </div>
+        </div>
+
+        <div class="block-flat game-column">
+          <div class="game-title-container">
+            <span class="game-title">{{ 'ANDROID_TITLE' | translate }}</span>
+          </div>
+
+
+          <div class="about_text"><a href="https://play.google.com/store/apps/details?id=com.ar.oe" target="_blank">
+            <p>{{ 'ANDROID_DESCRIPTION' | translate }} Play Store.</p><br />
+            <div style="text-align:center; margin: 10px 0;"><img src="images/android_screen.png" /></div><br />
+          </div>
+        </div>
+
+        <div class="block-flat game-column">
+          <div class="game-title-container">
+            <span class="game-title">Contact</span>
+          </div>
+
+          <div class="about_text">
+            <p>{{ 'CONTACT_DESCRIPTION' | translate }} <a href="http://www.twitter.com/OpeneSport" target="_blank">@OpeneSport</a></p>
+            <p>{{ 'CONTACT_DESCRIPTION2' | translate }}</p>
+          </div>
+        </div>
+
+<!--     <div class="col-md-5">
        <div class="block-flat game-home-bloc">
           <div class="header game-title-container game-title">{{ 'STREAMS' | translate }}</div>
           <div>
@@ -33,12 +69,12 @@
               </a>
             </li>
             <li class="loading" ng-if="!streamsLoaded" style="cursor:default;">{{ 'LOADING' | translate }} <img ng-src="images/loading.png" />
-            <!-- <li class="more" ng-disabled="gameStreams.length < streams_page_size" ng-click="nextPage('streams')" style="cursor:pointer;">{{ 'MORE' | translate }} <img ng-src="images/more.png" /> -->
+            <li class="more" ng-disabled="gameStreams.length < streams_page_size" ng-click="nextPage('streams')" style="cursor:pointer;">{{ 'MORE' | translate }} <img ng-src="images/more.png" /> 
               </li>
           </ul>
           </div>
         </div>
-      </div>
+      </div>  -->
 
     </div>
 </div>

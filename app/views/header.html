@@ -4,13 +4,13 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="fa fa-gear"></span>
         </button>
-        <a class="navbar-brand" href="#"><img src="images/logo2.png" /></a>
+        <a class="navbar-brand"><img src="images/logo2.png" /></a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a target="_blank" href="https://play.google.com/store/apps/details?id=com.ar.oe"><i class="fa fa-android" style="padding-right:5px"></i> APP ANDROID</a></li>
           <li><a target="_blank" href="https://twitter.com/openesport"><i class="fa fa-twitter" style="padding-right:5px"></i> @OPENESPORT</a></li>
-          <li><a href="#/about"><i class="fa fa-rocket" style="padding-right:5px"></i>{{ 'ABOUT' | translate }}</a></li>
+          <!-- <li><a href="#/about"><i class="fa fa-rocket" style="padding-right:5px"></i>{{ 'ABOUT' | translate }}</a></li> -->
         </ul>
       </div>
     </div>
@@ -21,13 +21,10 @@
   <div id="filter-container">
       <div id="filter-name">{{ 'FILTER' | translate }}</div>
       <div ng-repeat="game in gameIcons" ng-class="(game.enabled) ? 'filter-on' : 'filter-off'" class="filter" ng-click="showGame(game.id)">
-        <img ng-src="images/{{game.id}}.png" height="20px" width="20px" /><span ng-bind="game.abrev" style="padding-left:6px"></span>
-      </div>
-      <div ng-repeat="lang in languages" ng-class="(lang.enabled) ? 'filter-on' : 'filter-off'" class="filter" ng-click="showLanguage(lang.id)">
-        <img ng-src="images/{{lang.id}}.png" height="20px" width="20px" /><span ng-bind="lang.abrev" style="padding-left:6px"></span>
+        <img ng-src="images/{{game.id}}.png" />
       </div>
       <div class="filter filter-none" ng-click="showMore()">
-        <img ng-src="images/more_filter.png" height="20px" width="20px" />
+        <img ng-src="images/more_filter.png" />
       </div>
   </div>
 
@@ -35,7 +32,7 @@
     <div class="col-md-4">
       <div class="list-group">  
         <a ng-repeat="website in websites" ng-if="$index%3 === 0" ng-click="showWebsite(website.name)" class="list-group-item" style="cursor:pointer;">
-          <img ng-class="(website.enabled) ? 'filter-on-left' : 'filter-off-left'" ng-src="images/{{website.id}}_24.png" /> <span ng-bind="website.name"></span>
+          <img ng-class="(website.enabled) ? 'filter-on-left' : 'filter-off-left'" ng-src="images/{{website.lang}}.png" /> <span ng-bind="website.name"></span>
         </a>
       </div>
     </div>
@@ -43,7 +40,7 @@
     <div class="col-md-4">
       <div class="list-group">  
         <a ng-repeat="website in websites" ng-if="$index%3 === 1" ng-click="showWebsite(website.name)" class="list-group-item" style="cursor:pointer;">
-          <img ng-class="(website.enabled) ? 'filter-on-left' : 'filter-off-left'" ng-src="images/{{website.id}}_24.png" /> <span ng-bind="website.name"></span>
+          <img ng-class="(website.enabled) ? 'filter-on-left' : 'filter-off-left'" ng-src="images/{{website.lang}}.png" /> <span ng-bind="website.name"></span>
         </a>
       </div>
     </div>
@@ -51,7 +48,7 @@
     <div class="col-md-4">
       <div class="list-group">  
         <a ng-repeat="website in websites" ng-if="$index%3 === 2" ng-click="showWebsite(website.name)" class="list-group-item" style="cursor:pointer;">
-          <img ng-class="(website.enabled) ? 'filter-on-left' : 'filter-off-left'" ng-src="images/{{website.id}}_24.png" /> <span ng-bind="website.name"></span>
+          <img ng-class="(website.enabled) ? 'filter-on-left' : 'filter-off-left'" ng-src="images/{{website.lang}}.png" /> <span ng-bind="website.name"></span>
         </a>
       </div>
     </div>

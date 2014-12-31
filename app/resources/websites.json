@@ -1,93 +1,9 @@
 {
-    "O Gaming": {
-        "name": "O Gaming",
-        "id": "ogaming",
-        "lang": "fr",
-        "enabled": true 
-    }, 
-    "Team aAa": {
-        "name": "Team aAa",
-        "id": "teamaaa",
-        "lang": "fr",
-        "enabled": true 
-    }, 
-    "Millenium": {
-        "name": "Millenium",
-        "id": "millenium",
-        "lang": "fr",
-        "enabled": true 
-    }, 
-    "Esport Actu": {
-        "name": "Esport Actu",
-        "id": "esportactu",
-        "lang": "fr",
-        "enabled": true
-    },
-    "Thunderbot": {
-        "name": "Thunderbot",
-        "id": "thunderbot",
-        "lang": "fr",
-        "enabled": true 
-    }, 
-    "IEWT": {
-        "name": "IEWT",
-        "id": "iewt",
-        "lang": "fr",
-        "enabled": true 
-    }, 
-    "VaKarM":{
-        "name": "VaKarM",
-        "id": "vakarm",
-        "lang": "fr",
-        "enabled": true 
-    }, 
-    "dota2fr":{
-        "name": "dota2fr",
-        "id": "dota2fr",
-        "lang": "fr",
-        "enabled": true 
-    }, 
-    "Reddit":{
-        "name": "Reddit",
-        "id": "reddit",
-        "lang": "en",
-        "enabled": false 
-    }, 
-    "onGamers":{
-        "name": "onGamers",
-        "id": "ongamers",
-        "lang": "en",
-        "enabled": true 
-    }, 
-    "Esports Heaven":{
-        "name": "Esports Heaven",
-        "id": "esportsheaven",
+    "Cloth5":{
+        "name": "Cloth5",
+        "id": "cloth5",
         "lang": "en",
         "enabled": true
-    },
-    "SK Gaming":{
-        "name": "SK Gaming",
-        "id": "skgaming",
-        "lang": "en",
-        "enabled": true 
-    }, 
-    "HLTV":{
-        "name": "HLTV",
-        "id": "hltv",
-        "lang": "en",
-        "enabled": true 
-    }, 
-    "TeamLiquid":{
-        "name": "TeamLiquid",
-        "id": "teamliquid",
-        "lang": "en",
-        "enabled": true 
-    },
-    "joinDOTA":{
-        "name": "joinDOTA",
-        "id": "joindota",
-        "lang": "en",
-        "enabled": true 
     },
     "Esports Express":{
         "name": "Esports Express",
@@ -95,9 +11,9 @@
         "lang": "en",
         "enabled": true
     },
-    "Shoryuken":{
-        "name": "Shoryuken",
-        "id": "shoryuken",
+    "Esports Heaven":{
+        "name": "Esports Heaven",
+        "id": "esportsheaven",
         "lang": "en",
         "enabled": true
     },
@@ -107,15 +23,9 @@
         "lang": "en",
         "enabled": true
     },
-    "LiquidHearth":{
-        "name": "LiquidHearth",
-        "id": "liquidhearth",
-        "lang": "en",
-        "enabled": true
-    },
-    "Cloth5":{
-        "name": "Cloth5",
-        "id": "cloth5",
+    "Goldper10":{
+        "name": "Goldper10",
+        "id": "goldper10",
         "lang": "en",
         "enabled": true
     },
@@ -124,5 +34,120 @@
         "id": "gosugamers",
         "lang": "en",
         "enabled": true
+    },
+    "HLTV":{
+        "name": "HLTV",
+        "id": "hltv",
+        "lang": "en",
+        "enabled": true 
+    },
+    "joinDOTA":{
+        "name": "joinDOTA",
+        "id": "joindota",
+        "lang": "en",
+        "enabled": true 
+    },
+    "LiquidHearth":{
+        "name": "LiquidHearth",
+        "id": "liquidhearth",
+        "lang": "en",
+        "enabled": true
+    },
+    "News of Legends":{
+        "name": "News of Legends",
+        "id": "newsoflegends",
+        "lang": "en",
+        "enabled": true
+    },
+    "onGamers":{
+        "name": "onGamers",
+        "id": "ongamers",
+        "lang": "en",
+        "enabled": true 
+    }, 
+    "Reddit":{
+        "name": "Reddit",
+        "id": "reddit",
+        "lang": "en",
+        "enabled": false 
+    }, 
+    "Shoryuken":{
+        "name": "Shoryuken",
+        "id": "shoryuken",
+        "lang": "en",
+        "enabled": true
+    },
+    "SK Gaming":{
+        "name": "SK Gaming",
+        "id": "skgaming",
+        "lang": "en",
+        "enabled": true 
+    },  
+    "TeamLiquid":{
+        "name": "TeamLiquid",
+        "id": "teamliquid",
+        "lang": "en",
+        "enabled": true 
+    },
+    "The Daily Dot":{
+        "name": "The Daily Dot",
+        "id": "dailydot",
+        "lang": "en",
+        "enabled": true
+    },
+    "dota2fr":{
+        "name": "dota2fr",
+        "id": "dota2fr",
+        "lang": "fr",
+        "enabled": true 
+    }, 
+    "Esport Actu": {
+        "name": "Esport Actu",
+        "id": "esportactu",
+        "lang": "fr",
+        "enabled": true
+    },
+    "IEWT": {
+        "name": "IEWT",
+        "id": "iewt",
+        "lang": "fr",
+        "enabled": true 
+    }, 
+    "Millenium": {
+        "name": "Millenium",
+        "id": "millenium",
+        "lang": "fr",
+        "enabled": true 
+    }, 
+    "O Gaming": {
+        "name": "O Gaming",
+        "id": "ogaming",
+        "lang": "fr",
+        "enabled": true 
+    }, 
+    "Redbull":{
+        "name": "Redbull",
+        "id": "redbull",
+        "lang": "fr",
+        "enabled": true
+    },
+    "Team aAa": {
+        "name": "Team aAa",
+        "id": "teamaaa",
+        "lang": "fr",
+        "enabled": true 
+    }, 
+    "Thunderbot": {
+        "name": "Thunderbot",
+        "id": "thunderbot",
+        "lang": "fr",
+        "enabled": true 
+    }, 
+    "VaKarM":{
+        "name": "VaKarM",
+        "id": "vakarm",
+        "lang": "fr",
+        "enabled": true 
     }
+
 }

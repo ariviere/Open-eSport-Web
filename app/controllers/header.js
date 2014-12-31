@@ -3,28 +3,24 @@ var headerControllers = angular.module('headerControllers', []);
 headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$resource', '$http', '$translate', function($scope, $rootScope, $Cookies, $resource, $http, $translate) {
 	var request = $resource('resources/websites.json', {});
 
-	language = window.navigator.userLanguage || window.navigator.language;
-	if(language === "fr")
+	$rootScope.language = window.navigator.userLanguage || window.navigator.language;
+	if($rootScope.language === "fr")
 		$translate.uses("fr");
 	else{
-		language = "en";
+		$rootScope.language = "en";
 		$translate.uses("en");
 	}
 
 	$http.get('app/resources/websites.json').success(function(data) {
 		$rootScope.websites = data;
-		setDisabledWebsites(language);
-	});
+		initFirstLaunch();
+		setDisabledWebsites($rootScope.language);
 
-	$http.get('app/resources/games.json').success(function(data) {
-		$rootScope.gamesInfo = data;
-		initGameFilters()
-	});
-
-	$http.get('app/resources/languages.json').success(function(data) {
-		$rootScope.languages = data;
-		$rootScope.languages[language].enabled = true;
-		initLanguageFilters();
+		$http.get('app/resources/games.json').success(function(data) {
+			$rootScope.gamesInfo = data;
+			initGameFilters();
+			$rootScope.refreshArticles(false);
+		});
 	});
 
 	$scope.showWebsite = function(website_selected){
@@ -35,7 +31,7 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$re
 			}
 		});
 
-		$rootScope.filterArticles();
+		$rootScope.refreshArticles(false);
 	}
 
 	$scope.showGame = function(game_selected){
@@ -46,18 +42,7 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$re
 			}
 		});
 
-		$rootScope.filterArticles();
-	}
-
-	$scope.showLanguage = function(language_selected){
-		angular.forEach($rootScope.languages, function(value, key){
-			if(language_selected === key){
-				$rootScope.languages[key].enabled = !$rootScope.languages[key].enabled;
-				$Cookies.setItem(key, $rootScope.languages[key].enabled.toString(), Infinity);
-			}
-		});
-
-		$rootScope.filterArticles();
+		$rootScope.refreshArticles(false);
 	}
 
 	function setDisabledWebsites(language){
@@ -80,14 +65,16 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$re
 		});
 	}
 
-	function initLanguageFilters(){
-		angular.forEach($rootScope.languages, function(value, key){
-			if($Cookies.getItem(key) === 'false'){
-				$rootScope.languages[key].enabled = false;
-			}else if($Cookies.getItem(key) === 'true'){
-				$rootScope.languages[key].enabled = true;
-			}
-		});
+	function initFirstLaunch(){
+		if($Cookies.getItem("firstLaunch") !== "false"){
+			angular.forEach($rootScope.websites, function(value, key){
+				if(($rootScope.language === "en" && value.lang !== "en") || ($rootScope.language === "fr" && value.lang !== "fr")){
+					$Cookies.setItem(key, "false", Infinity);
+				}
+			});	
+
+			$Cookies.setItem("firstLaunch", "false", Infinity);
+		}
 	}
 
 	$scope.showMore = function(){

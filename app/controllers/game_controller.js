@@ -13,7 +13,7 @@ function($scope, $rootScope, $resource, $routeParams, $filter) {
 
     getArticles();
 
-    getStreams();
+    // getStreams();
 
     $rootScope.filterArticles = function(){
         $scope.gameArticles = [];
@@ -48,12 +48,12 @@ function($scope, $rootScope, $resource, $routeParams, $filter) {
     }
 
     $scope.orderArticles = '-pubDate';
-    $scope.orderStreams = '-viewers';
+    // $scope.orderStreams = '-viewers';
 
-    $scope.hideStreams = false;
+    // $scope.hideStreams = false;
 
     $scope.articles_page_size = 12;
-    $scope.streams_page_size = 11;
+    // $scope.streams_page_size = 11;
 
 
     function getArticles(requestArticles){
@@ -80,35 +80,35 @@ function($scope, $rootScope, $resource, $routeParams, $filter) {
         });
     }
 
-    function getStreams(){
-        $scope.gameStreams = [];
-        $scope.streamPage = 0;
+    // function getStreams(){
+    //     $scope.gameStreams = [];
+    //     $scope.streamPage = 0;
         
-        var streamsUrl;
+    //     var streamsUrl;
 
-        if($scope.game.twitch_name === "autres")
-            streamsUrl = "https://api.twitch.tv/kraken/streams?callback=?";
-        else
-            streamsUrl = "https://api.twitch.tv/kraken/streams?game=" + $scope.game.twitch_name + "&callback=?";
+    //     if($scope.game.twitch_name === "autres")
+    //         streamsUrl = "https://api.twitch.tv/kraken/streams?callback=?";
+    //     else
+    //         streamsUrl = "https://api.twitch.tv/kraken/streams?game=" + $scope.game.twitch_name + "&callback=?";
 
         
-        $.getJSON(streamsUrl, function (data) {
-            angular.forEach(data.streams, function(item, index){
-                var stream = {};
-                stream.name = item.channel.display_name;
-                stream.img = item.channel.logo;
-                stream.status = item.channel.status;
-                stream.link = item.channel.url;
-                stream.viewers = item.viewers;
-                $scope.$apply(
-                    $scope.gameStreams.push(stream)
-                );
-            });
+    //     $.getJSON(streamsUrl, function (data) {
+    //         angular.forEach(data.streams, function(item, index){
+    //             var stream = {};
+    //             stream.name = item.channel.display_name;
+    //             stream.img = item.channel.logo;
+    //             stream.status = item.channel.status;
+    //             stream.link = item.channel.url;
+    //             stream.viewers = item.viewers;
+    //             $scope.$apply(
+    //                 $scope.gameStreams.push(stream)
+    //             );
+    //         });
 
-            if($scope.gameStreams.length === 0 || $scope.gameStreams == []){
-                $scope.hideStreams = true;
-            }
-        });
-    }
+    //         if($scope.gameStreams.length === 0 || $scope.gameStreams == []){
+    //             $scope.hideStreams = true;
+    //         }
+    //     });
+    // }
 
 }]);
