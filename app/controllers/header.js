@@ -19,7 +19,10 @@ headerControllers.controller('navCtrl', ['$scope', '$rootScope', 'Cookies', '$re
 		$http.get('app/resources/games.json').success(function(data) {
 			$rootScope.gamesInfo = data;
 			initGameFilters();
-			$rootScope.refreshArticles(false);
+
+			if($rootScope.refreshArticles() !== undefined){
+				$rootScope.refreshArticles(false);
+			}
 		});
 	});
 

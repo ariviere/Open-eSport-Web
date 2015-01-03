@@ -6,7 +6,6 @@ var homeController = angular.module('homeController', []);
 
 homeController.controller('HomeCtrl', ['$scope', '$rootScope', '$resource', 'Cookies', '$filter', 
 function($scope, $rootScope, $resource, $Cookies, $filter) {
-    var SERVER_ADDRESS = 'http://openesport.herokuapp.com/posts/web';
     var address = "http://openesport.herokuapp.com/askmongo/all/games/%1$s/websites/%2$s/page/%3$s";
 
     $scope.articlesLoaded = false;
@@ -18,7 +17,12 @@ function($scope, $rootScope, $resource, $Cookies, $filter) {
     $scope.posts = [];
     $scope.page = 0;
     $scope.orderArticles = '-pubDate';
-    
+
+    if($rootScope.gamesInfo !== undefined && $rootScope.websites !== undefined){
+        console.log($rootScope.gamesInfo);
+        console.log($rootScope.websites);
+        $rootScope.refreshArticles(false);
+    }
 
     function getArticles(addPage){
         var games = "";
