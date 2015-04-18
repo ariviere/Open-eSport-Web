@@ -106,6 +106,12 @@
         "id": "esportactu",
         "lang": "fr",
         "enabled": true
+    }, 
+    "Hyperia":{
+        "name": "Hyperia",
+        "id": "hyperia",
+        "lang": "fr",
+        "enabled": true 
     },
     "IEWT": {
         "name": "IEWT",
